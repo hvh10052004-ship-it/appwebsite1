@@ -1,0 +1,17 @@
+{
+  "name": "WebStudio",
+  "short_name": "WebStudio",
+  "description": "Thiết kế website chuyên nghiệp",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#070b14",
+  "theme_color": "#8f7cff",
+  "lang": "vi",
+  "icons": [
+    {
+      "src": "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f310.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    }
+  ]
+}

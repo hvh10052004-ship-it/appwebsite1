@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Điều khoản & điều kiện | WebStudio</title>
+  <meta name="description" content="Điều khoản và điều kiện sử dụng website và dịch vụ của WebStudio." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#8f7cff" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("webstudio-theme") === "light") {
+          document.documentElement.classList.add("theme-light-pending");
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <script>
+    if (document.documentElement.classList.contains("theme-light-pending")) {
+      document.body.classList.add("theme-light");
+      document.documentElement.classList.remove("theme-light-pending");
+    }
+  </script>
+  <div id="top">
+        <header class="site-header" id="siteHeader">
+      <div class="container">
+        <nav class="site-nav">
+          <a class="logo" href="index.html">Web<span>Studio.</span></a>
+
+          <div class="nav-cluster" id="navLinks">
+            <ul class="nav-pill">
+              <li><a href="index.html">Trang chủ</a></li>
+              <li><a href="about.html">Về chúng tôi</a></li>
+              <li class="has-dropdown">
+                <button type="button" class="nav-drop-btn" aria-expanded="false">
+                  Thiết kế Website <span class="chev" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown">
+                  <li><a href="landing.html">Landing Page</a></li>
+                  <li><a href="company.html">Website công ty</a></li>
+                  <li><a href="saas.html">Website Startup / SaaS</a></li>
+                  <li><a href="ecommerce.html">Web bán hàng / E-commerce</a></li>
+                </ul>
+              </li>
+              <li class="has-dropdown">
+                <button type="button" class="nav-drop-btn" aria-expanded="false">
+                  Dịch vụ <span class="chev" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown">
+                  <li><a href="index.html#services">Lập trình web</a></li>
+                  <li><a href="index.html#pricing">Bảng giá</a></li>
+                  <li><a href="tai-ung-dung.html">Tải ứng dụng</a></li>
+                </ul>
+              </li>
+              <li><a href="collection.html">Dự án</a></li>
+              <li class="has-dropdown more">
+                <button type="button" class="nav-more" aria-label="Thêm menu" aria-expanded="false">⋯</button>
+                <ul class="dropdown">
+                  <li><a href="cart.html">Giỏ yêu cầu</a></li>
+                  <li><a href="index.html#process">Quy trình</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <div class="nav-tools">
+              <button type="button" class="icon-btn" id="searchOpen" aria-label="Tìm kiếm" aria-expanded="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+              <button type="button" class="icon-btn" id="themeToggle" aria-label="Chuyển sang chế độ sáng"><svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z"></path></svg></button>
+            </div>
+
+            <a class="nav-cta" href="contact.html">Tư vấn ngay</a>
+          </div>
+
+          <button type="button" class="menu-btn" id="menuBtn" aria-label="Mở menu">☰</button>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <div class="section-label">Điều khoản</div>
+          <h1>Điều khoản & điều kiện</h1>
+          <p>Các điều khoản áp dụng khi bạn sử dụng website WebStudio và thuê dịch vụ thiết kế/lập trình web.</p>
+        </div>
+      </section>
+      <section class="page-content">
+        <div class="container legal-content">
+
+            <article class="legal-block">
+              <h2>1. Chấp nhận điều khoản</h2>
+              <p>Khi truy cập website WebStudio hoặc sử dụng dịch vụ thiết kế/lập trình website của chúng tôi, bạn đồng ý với Điều khoản & điều kiện này. Nếu không đồng ý, vui lòng ngừng sử dụng website/dịch vụ.</p>
+              
+            </article>
+
+            <article class="legal-block">
+              <h2>2. Phạm vi dịch vụ</h2>
+              <p>WebStudio cung cấp dịch vụ thiết kế và phát triển website (Landing Page, website công ty, E-commerce, Startup/SaaS) theo thỏa thuận cụ thể với từng khách hàng. Phạm vi công việc, tiến độ và chi phí sẽ được xác nhận bằng báo giá/hợp đồng trước khi triển khai.</p>
+              
+            </article>
+
+            <article class="legal-block">
+              <h2>3. Trách nhiệm của khách hàng</h2>
+              <p>Khách hàng chịu trách nhiệm:</p>
+              <ul><li>Cung cấp thông tin, nội dung, hình ảnh và phản hồi đúng hạn để dự án tiến triển.</li><li>Đảm bảo quyền sử dụng hợp pháp đối với nội dung, logo, hình ảnh cung cấp cho WebStudio.</li><li>Thanh toán theo đúng thỏa thuận đã thống nhất.</li></ul>
+            </article>
+
+            <article class="legal-block">
+              <h2>4. Trách nhiệm của WebStudio</h2>
+              <p>Chúng tôi thực hiện công việc theo phạm vi đã thống nhất, bàn giao sản phẩm và hướng dẫn sử dụng cơ bản. Các hạng mục ngoài phạm vi (tính năng mới, chỉnh sửa lớn sau bàn giao) có thể phát sinh chi phí bổ sung.</p>
+              
+            </article>
+
+            <article class="legal-block">
+              <h2>5. Thanh toán và hoàn tiền</h2>
+              <p>Điều kiện thanh toán được nêu trong báo giá/hợp đồng từng dự án. Khoản tạm ứng thường không hoàn lại sau khi đã bắt đầu thiết kế/lập trình, trừ trường hợp hai bên thỏa thuận khác bằng văn bản.</p>
+              
+            </article>
+
+            <article class="legal-block">
+              <h2>6. Sở hữu trí tuệ</h2>
+              <p>Sau khi thanh toán đủ và bàn giao, quyền sử dụng sản phẩm website thuộc về khách hàng theo thỏa thuận. WebStudio được phép trưng bày dự án trong portfolio trừ khi khách hàng yêu cầu bảo mật bằng văn bản. Mã nguồn thư viện mã nguồn mở vẫn tuân theo giấy phép gốc của thư viện đó.</p>
+              
+            </article>
+
+            <article class="legal-block">
+              <h2>7. Giới hạn trách nhiệm</h2>
+              <p>WebStudio không chịu trách nhiệm cho thiệt hại gián tiếp phát sinh từ việc sử dụng website (mất dữ liệu do hosting bên thứ ba, lỗi từ plugin/dịch vụ ngoài phạm vi quản lý, chiến dịch quảng cáo của khách hàng). Chúng tôi nỗ lực tối ưu tốc độ và bảo mật ở mức hợp lý theo phạm vi đã cam kết.</p>
+              
+            </article>
+
+            <article class="legal-block">
+              <h2>8. Nội dung trên website WebStudio</h2>
+              <p>Thông tin giá, gói dịch vụ và nội dung trên website mang tính tham khảo. Báo giá chính thức được xác nhận sau khi trao đổi nhu cầu cụ thể. Nghiêm cấm sao chép, sử dụng trái phép nội dung/thiết kế của website WebStudio.</p>
+              
+            </article>
+
+            <article class="legal-block">
+              <h2>9. Luật áp dụng</h2>
+              <p>Điều khoản này được điều chỉnh bởi pháp luật Việt Nam. Mọi tranh chấp sẽ ưu tiên giải quyết bằng thương lượng; nếu không thành sẽ đưa ra cơ quan có thẩm quyền tại Việt Nam.</p>
+              
+            </article>
+
+            <article class="legal-block">
+              <h2>10. Liên hệ</h2>
+              <p>Mọi thắc mắc về Điều khoản & điều kiện, vui lòng liên hệ: email info@webhd.vn — điện thoại 0938 002 776.</p>
+              
+            </article>
+          <p class="legal-updated">Cập nhật lần cuối: 14/08/2026</p>
+        </div>
+      </section>
+    </main>
+        <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>Thông tin liên hệ</h3>
+            <ul class="footer-contact">
+              <li>
+                <span class="footer-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v2a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h2a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L7.1 9.5a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.9z"/></svg>
+                </span>
+                <a href="tel:0938002776">0938 002 776</a>
+              </li>
+              <li>
+                <span class="footer-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+                </span>
+                <a href="mailto:info@webhd.vn">info@webhd.vn</a>
+              </li>
+            </ul>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook" class="social-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H9v3h2v7h3v-7h2.6l.4-3H14V9z"/></svg>
+              </a>
+              <a href="#" aria-label="YouTube" class="social-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23 7.5s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.9 4 12 4 12 4h0s-4.9 0-7.8.2c-.5.1-1.4.1-2.3 1C1.2 5.9 1 7.5 1 7.5S.8 9.4.8 11.2v1.7C.8 14.6 1 16.5 1 16.5s.2 1.6.9 2.3c.9.9 2.1.9 2.6 1 1.9.2 7.5.2 7.5.2s4.9 0 7.8-.2c.5-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.6v-1.7C23.2 9.4 23 7.5 23 7.5zM9.8 14.6V8.9l5.3 2.9-5.3 2.8z"/></svg>
+              </a>
+              <a href="#" aria-label="TikTok" class="social-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.6 7.4a5.7 5.7 0 0 1-3.4-1.1v7.2a5.7 5.7 0 1 1-5.7-5.7c.3 0 .6 0 .9.1v2.8a2.9 2.9 0 1 0 2 2.8V2h2.8a5.7 5.7 0 0 0 3.4 3.4v2z"/></svg>
+              </a>
+              <a href="#" aria-label="GitHub" class="social-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.8 1a9.6 9.6 0 0 1 5 0c2-1.3 2.8-1 2.8-1a3.6 3.6 0 0 1 .1 2.7 3.9 3.9 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h3>Về Chúng Tôi</h3>
+            <ul class="footer-list">
+              <li><a href="about.html">Về chúng tôi</a></li>
+              <li><a href="collection.html">Dự án</a></li>
+              <li><a href="contact.html">Liên hệ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Dịch Vụ</h3>
+            <ul class="footer-list">
+              <li><a href="product.html">Thiết kế website</a></li>
+              <li><a href="landing.html">Thiết kế landing page</a></li>
+              <li><a href="company.html">Thiết kế website công ty</a></li>
+              <li><a href="saas.html">Website Startup / SaaS</a></li>
+              <li><a href="ecommerce.html">Web bán hàng / E-commerce</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Chính sách</h3>
+            <ul class="footer-list">
+              <li><a href="privacy.html">Chính sách bảo mật</a></li>
+              <li><a href="terms.html">Điều khoản &amp; điều kiện</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 WebStudio. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

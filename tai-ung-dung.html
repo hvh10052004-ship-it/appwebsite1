@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tải App khách Studio | WebStudio</title>
+  <meta name="description" content="Tải ứng dụng khách WebStudio về Android để soạn website, xem trước và chat hỗ trợ." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#8f7cff" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("webstudio-theme") === "light") {
+          document.documentElement.classList.add("theme-light-pending");
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <script>
+    if (document.documentElement.classList.contains("theme-light-pending")) {
+      document.body.classList.add("theme-light");
+      document.documentElement.classList.remove("theme-light-pending");
+    }
+  </script>
+  <div id="top">
+    <header class="site-header" id="siteHeader">
+      <div class="container">
+        <nav class="site-nav">
+          <a class="logo" href="index.html">Web<span>Studio.</span></a>
+          <div class="nav-cluster" id="navLinks">
+            <ul class="nav-pill">
+              <li><a href="index.html">Trang chủ</a></li>
+              <li><a href="about.html">Về chúng tôi</a></li>
+              <li class="has-dropdown">
+                <button type="button" class="nav-drop-btn" aria-expanded="false">
+                  Thiết kế Website <span class="chev" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown">
+                  <li><a href="landing.html">Landing Page</a></li>
+                  <li><a href="company.html">Website công ty</a></li>
+                  <li><a href="saas.html">Website Startup / SaaS</a></li>
+                  <li><a href="ecommerce.html">Web bán hàng / E-commerce</a></li>
+                </ul>
+              </li>
+              <li class="has-dropdown">
+                <button type="button" class="nav-drop-btn" aria-expanded="false">
+                  Dịch vụ <span class="chev" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown">
+                  <li><a href="index.html#services">Lập trình web</a></li>
+                  <li><a href="index.html#pricing">Bảng giá</a></li>
+                  <li><a href="tai-ung-dung.html">Tải ứng dụng</a></li>
+                </ul>
+              </li>
+              <li><a href="collection.html">Dự án</a></li>
+              <li class="has-dropdown more">
+                <button type="button" class="nav-more" aria-label="Thêm menu" aria-expanded="false">⋯</button>
+                <ul class="dropdown">
+                  <li><a href="cart.html">Giỏ yêu cầu</a></li>
+                  <li><a href="index.html#process">Quy trình</a></li>
+                </ul>
+              </li>
+            </ul>
+            <div class="nav-tools">
+              <button type="button" class="icon-btn" id="searchOpen" aria-label="Tìm kiếm" aria-expanded="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+              <button type="button" class="icon-btn" id="themeToggle" aria-label="Chuyển sang chế độ sáng"><svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z"></path></svg></button>
+            </div>
+            <a class="nav-cta" href="contact.html">Tư vấn ngay</a>
+          </div>
+          <button type="button" class="menu-btn" id="menuBtn" aria-label="Mở menu">☰</button>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <div class="section-label">App khách</div>
+          <h1>Tải App khách Studio về điện thoại.</h1>
+          <p>Soạn website, xem trước, chat hỗ trợ và chạy thử như một ứng dụng thật — dành cho khách hàng WebStudio trên Android.</p>
+        </div>
+      </section>
+      <section class="page-content">
+        <div class="container content-grid">
+          <article class="content-card">
+            <h2>App khách WebStudio</h2>
+            <p>Cài APK trên Android để mở Studio ngay trên điện thoại: chọn loại website, điền nội dung, xem bản xem trước và trao đổi với đội ngũ hỗ trợ.</p>
+            <div class="meta-row">
+              <span class="chip">Android</span>
+              <span class="chip">APK</span>
+              <span class="chip">Soạn website</span>
+              <span class="chip">Xem trước</span>
+            </div>
+            <a class="btn btn-primary" id="dlApk" href="WebStudio.apk" download="WebStudio.apk">Tải App khách Studio</a>
+            <p class="app-dl-hint">Sau khi tải, mở <b>WebStudio.apk</b>, cho phép cài từ nguồn này, rồi bấm Cài đặt. App chạy trên điện thoại — không cần bật máy tính 24/7.</p>
+          </article>
+          <div class="app-phone" aria-hidden="true">
+            <div class="app-phone-notch"></div>
+            <div class="app-phone-screen">
+              <p class="app-phone-kicker">WebStudio</p>
+              <h3>Tạo website của bạn</h3>
+              <p>Chọn loại site — soạn trên điện thoại</p>
+              <div class="app-phone-tiles">
+                <span>Landing</span>
+                <span>Công ty</span>
+                <span>Bán hàng</span>
+                <span>SaaS</span>
+              </div>
+              <div class="app-phone-cta">Bắt đầu soạn</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="section-label">Tính năng</div>
+          <h2 class="section-title">Studio trên điện thoại làm được gì.</h2>
+          <div class="about-values">
+            <article class="list-card"><h3>Soạn nội dung</h3><p>Chọn mẫu, điền thông tin doanh nghiệp, dịch vụ và liên hệ ngay trên điện thoại.</p></article>
+            <article class="list-card"><h3>Xem trước</h3><p>Xem website đang dựng như khách thật, chỉnh từng khối rồi lưu.</p></article>
+            <article class="list-card"><h3>Chat hỗ trợ</h3><p>Nhắn với WebStudio khi cần chỉnh sửa, báo giá hoặc bàn giao.</p></article>
+            <article class="list-card"><h3>Chạy như app</h3><p>Giao diện full-screen, không thanh địa chỉ — trải nghiệm như ứng dụng cài sẵn.</p></article>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="section-label">Cài đặt</div>
+          <h2 class="section-title">Ba bước để mở App khách Studio.</h2>
+          <div class="app-dl-steps">
+            <article class="list-card"><h3>1. Tải APK</h3><p>Bấm Tải App khách Studio và chờ tệp WebStudio.apk về máy.</p></article>
+            <article class="list-card"><h3>2. Cho phép cài</h3><p>Mở tệp, cho phép cài đặt từ trình duyệt nếu hệ thống hỏi.</p></article>
+            <article class="list-card"><h3>3. Mở Studio</h3><p>Cài xong, mở icon WebStudio trên màn hình chính để bắt đầu soạn.</p></article>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>Thông tin liên hệ</h3>
+            <ul class="footer-contact">
+              <li>
+                <span class="footer-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v2a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h2a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L7.1 9.5a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.9z"/></svg>
+                </span>
+                <a href="tel:0938002776">0938 002 776</a>
+              </li>
+              <li>
+                <span class="footer-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+                </span>
+                <a href="mailto:info@webhd.vn">info@webhd.vn</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Về Chúng Tôi</h3>
+            <ul class="footer-list">
+              <li><a href="about.html">Về chúng tôi</a></li>
+              <li><a href="tai-ung-dung.html">Tải App khách</a></li>
+              <li><a href="contact.html">Liên hệ</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Dịch Vụ</h3>
+            <ul class="footer-list">
+              <li><a href="product.html">Thiết kế website</a></li>
+              <li><a href="landing.html">Thiết kế landing page</a></li>
+              <li><a href="company.html">Thiết kế website công ty</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Chính sách</h3>
+            <ul class="footer-list">
+              <li><a href="privacy.html">Chính sách bảo mật</a></li>
+              <li><a href="terms.html">Điều khoản &amp; điều kiện</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 WebStudio. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="main.js"></script>
+  <script>
+    (function () {
+      var link = document.getElementById("dlApk");
+      if (!link) return;
+      if (location.protocol !== "file:" && (location.port === "3000" || location.port === "3001")) {
+        link.href = "/api/download/apk";
+        link.removeAttribute("download");
+      }
+    })();
+  </script>
+</body>
+</html>
