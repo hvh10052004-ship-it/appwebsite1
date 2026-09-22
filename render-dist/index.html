@@ -19,6 +19,8 @@ body:has(.app-stage)::after {
 }
 
 .app-stage {
+  min-height: 100%;
+  min-height: 100vh;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -1711,7 +1713,10 @@ html.app-native body:has(.app-stage) {
 }
 
 html.app-native .app-stage {
+  min-height: 100%;
+  min-height: 100vh;
   min-height: 100dvh;
+  height: 100%;
   padding: 0;
   justify-content: stretch;
   align-items: stretch;
@@ -1723,6 +1728,10 @@ html.app-native .app-stage-hint {
 
 html.app-native .app-phone {
   width: 100%;
+  height: 100%;
+  min-height: 100%;
+  height: 100vh;
+  min-height: 100vh;
   height: 100dvh;
   min-height: 100dvh;
   max-width: none;
@@ -1933,11 +1942,18 @@ button.app-soan-item.is-locked { pointer-events: auto; }
 .app-site-thumb { position: relative; width: 64px; height: 64px; border-radius: 12px; overflow: hidden; flex: none; background: var(--app-preview-img); }
 .app-site-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .app-chat-inbox-item { width: 100%; border: 0; background: transparent; font: inherit; color: inherit; cursor: pointer; text-align: left; }
+html, body { height: 100%; margin: 0; }
 html.app-native body { background: #f4f1ec; }
-html.app-native .app-stage { min-height: 100dvh; padding: 0; justify-content: stretch; align-items: stretch; }
+html.app-native .app-stage {
+  min-height: 100%; min-height: 100vh; min-height: 100dvh;
+  height: 100%; padding: 0; justify-content: stretch; align-items: stretch;
+}
 html.app-native .app-stage-hint { display: none; }
 html.app-native .app-phone {
-  width: 100%; height: 100dvh; min-height: 100dvh; max-width: none;
+  width: 100%; max-width: none;
+  height: 100%; min-height: 100%;
+  height: 100vh; min-height: 100vh;
+  height: 100dvh; min-height: 100dvh;
   border-radius: 0; border: 0; box-shadow: none;
 }
   </style>
@@ -1946,11 +1962,19 @@ html.app-native .app-phone {
   <div class="app-stage">
     <p class="app-stage-hint">App khách</p>
     <div class="app-phone" id="phone" data-theme="light">
-      <div class="app-phone-body" id="phoneBody"></div>
+      <div class="app-phone-body" id="phoneBody"><p class="app-note" style="padding:20px 4px">Đang mở app…</p></div>
       <nav class="app-tabbar" aria-label="Điều hướng app" id="tabbar"></nav>
     </div>
   </div>
   <script>
+(function () {
+  try {
+    var p = location.pathname || "/";
+    if (location.protocol !== "file:" && p.charAt(p.length - 1) !== "/" && !/.html$/i.test(p)) {
+      history.replaceState(null, "", p + "/" + (location.search || "") + (location.hash || ""));
+    }
+  } catch (e) {}
+})();
 const SITE_TYPES = [
   { id: "landing", name: "Landing Page", short: "Landing", blurb: "1 trang, chạy ads, thu lead, bán 1 sản phẩm." },
   { id: "company", name: "Website công ty", short: "Công ty", blurb: "Giới thiệu doanh nghiệp, dịch vụ, đội ngũ, liên hệ." },
@@ -2192,7 +2216,7 @@ function renderMau() {
         <button type="button" class="app-tpl" data-mau="${t.id}">
           <div class="app-tpl-img"><img src="${t.image}" alt="" /></div>
           <strong>${esc(t.name)}</strong>
-          <span>${esc(SITE_TYPES.find((x) => x.id === t.type)?.short || "")} · ${esc(t.use)}</span>
+          <span>${esc((SITE_TYPES.filter((x) => x.id === t.type)[0] || { short: "" }).short)} · ${esc(t.use)}</span>
         </button>`).join("")}
     </div>`;
 }
