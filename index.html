@@ -2,2592 +2,558 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>App WebStudio — Tạo website trên điện thoại</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebStudio - Thiết kế Website chuyên nghiệp</title>
+  <meta
+    name="description"
+    content="Thiết kế Landing Page, Website công ty, Web bán hàng E-commerce và Website Startup SaaS chuyên nghiệp."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="manifest" href="manifest.webmanifest" />
   <meta name="theme-color" content="#8f7cff" />
-  <link rel="icon" href="public/icons/app-khach-192.png" />
-  <link rel="apple-touch-icon" href="public/icons/app-khach-192.png" />
-  <style>
-body:has(.app-stage) {
-  background: #0b0f18;
-  overflow-x: hidden;
-}
-
-body:has(.app-stage)::before,
-body:has(.app-stage)::after {
-  display: none;
-}
-
-.app-stage {
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 28px 16px 36px;
-  gap: 18px;
-}
-
-.app-stage-hint {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.45);
-  text-align: center;
-}
-
-.app-stage-hint a {
-  color: #c4b5fd;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.app-phone {
-  --app-bg: #f4f1ec;
-  --app-fg: #1a1714;
-  --app-muted: #6b645c;
-  --app-faint: #9a9288;
-  --app-card: #fff;
-  --app-soft: #ece6dc;
-  --app-line: #efeae3;
-  --app-accent: #5b4bdd;
-  --app-accent-soft: #c4b5fd;
-  --app-muted-2: #c9c0b5;
-  --app-preview-img: #ddd7ce;
-  width: min(390px, 100%);
-  height: min(844px, calc(100dvh - 88px));
-  min-height: 640px;
-  background: var(--app-bg);
-  color: var(--app-fg);
-  border-radius: 36px;
-  border: 10px solid #161b26;
-  box-shadow: 0 0 0 1px #2a3142;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  view-transition-name: app-shell;
-}
-
-.app-phone[data-theme="dark"] {
-  --app-bg: #14121a;
-  --app-fg: #f3efe8;
-  --app-muted: #a8a097;
-  --app-faint: #7d766e;
-  --app-card: #1e1c26;
-  --app-soft: #2a2733;
-  --app-line: #322e3c;
-  --app-accent: #b4a8ff;
-  --app-accent-soft: #8b7cf0;
-  --app-muted-2: #4a4554;
-  --app-preview-img: #2a2733;
-}
-
-.app-phone-body {
-  flex: 1;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: 4px 18px 28px;
-  padding-top: max(4px, env(safe-area-inset-top));
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-
-.app-phone-body:not(.is-chat) > * {
-  flex-shrink: 0;
-}
-
-.app-phone-body.is-chat {
-  overflow: hidden;
-  padding: 0;
-}
-
-.app-phone-body.is-chat > * {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.app-home-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-.app-home-top h1 {
-  font-size: 22px;
-  line-height: 1.25;
-  letter-spacing: -0.03em;
-  font-weight: 800;
-}
-
-.app-home-top p {
-  font-size: 13px;
-  color: var(--app-muted);
-  margin-top: 4px;
-}
-
-.app-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 14px;
-  background: var(--app-fg);
-  color: var(--app-bg);
-  display: grid;
-  place-items: center;
-  font-size: 13px;
-  font-weight: 700;
-  flex: none;
-}
-
-.app-site-card {
-  background: var(--app-fg);
-  color: var(--app-bg);
-  border-radius: 22px;
-  padding: 16px;
-  margin-bottom: 14px;
-}
-
-.app-site-card-head {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.app-site-thumb {
-  position: relative;
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
-  overflow: hidden;
-  flex: none;
-  background: #2c2723;
-}
-
-.app-site-card h2 {
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.app-site-card .app-meta {
-  font-size: 12px;
-  color: rgba(244, 241, 236, 0.62);
-  margin-top: 3px;
-}
-
-.app-progress-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  margin: 14px 0 8px;
-  color: rgba(244, 241, 236, 0.72);
-}
-
-.app-progress-track {
-  height: 6px;
-  border-radius: 99px;
-  background: rgba(244, 241, 236, 0.14);
-  overflow: hidden;
-}
-
-.app-progress-fill {
-  width: 62%;
-  height: 100%;
-  background: #c4b5fd;
-  border-radius: 99px;
-}
-
-.app-site-actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.app-site-actions.is-center {
-  grid-template-columns: 1fr;
-  justify-items: center;
-}
-
-.app-site-actions.is-center .app-btn {
-  min-width: 200px;
-  width: min(240px, 100%);
-}
-
-.app-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 42px;
-  border-radius: 12px;
-  font-size: 13px;
-  font-weight: 600;
-  border: 0;
-  cursor: pointer;
-}
-
-.app-btn-primary {
-  background: #c4b5fd;
-  color: var(--app-fg);
-}
-
-.app-btn-ghost {
-  background: rgba(244, 241, 236, 0.1);
-  color: var(--app-bg);
-}
-
-.app-checks {
-  background: var(--app-card);
-  border-radius: 18px;
-  padding: 6px 4px;
-  margin-bottom: 16px;
-}
-
-.app-check {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  font-size: 14px;
-}
-
-.app-check + .app-check {
-  border-top: 1px solid var(--app-line);
-}
-
-.app-check-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
-  flex: none;
-  display: grid;
-  place-items: center;
-  background: var(--app-bg);
-  color: var(--app-faint);
-  border: 1px solid var(--app-line);
-}
-
-.app-check-icon.on {
-  background: var(--app-fg);
-  color: var(--app-bg);
-  border-color: var(--app-fg);
-}
-
-.app-check-label {
-  flex: 1;
-}
-
-.app-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex: none;
-  background: var(--app-muted-2);
-}
-
-.app-dot.on {
-  background: #276749;
-}
-
-.app-live {
-  background: var(--app-card);
-  border-radius: 12px;
-  padding: 10px 12px;
-  margin-bottom: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.app-live strong {
-  font-size: 12px;
-}
-
-.app-live span {
-  font-size: 11px;
-  color: var(--app-muted);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.app-check small {
-  color: var(--app-faint);
-  font-size: 12px;
-}
-
-.app-section-label {
-  font-size: 13px;
-  font-weight: 700;
-  margin: 4px 2px 10px;
-}
-
-.app-quick {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-bottom: 18px;
-}
-
-.app-quick a {
-  background: var(--app-card);
-  border-radius: 16px;
-  padding: 12px 8px 11px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--app-fg);
-}
-
-.app-quick-icon {
-  width: 32px;
-  height: 32px;
-  margin: 0 auto 8px;
-  border-radius: 10px;
-  background: var(--app-soft);
-  display: grid;
-  place-items: center;
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--app-accent);
-}
-
-.app-tabbar {
-  flex: none;
-  position: relative;
-  z-index: 30;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  padding: 8px 4px 14px;
-  background: var(--app-card);
-  border-top: 1px solid var(--app-line);
-}
-
-.app-tab {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  min-height: 48px;
-  font-size: 9px;
-  font-weight: 600;
-  color: var(--app-faint);
-  -webkit-tap-highlight-color: rgba(91, 75, 221, 0.2);
-}
-
-.app-tab-icon {
-  display: grid;
-  place-items: center;
-  height: 26px;
-  width: 26px;
-  flex: none;
-}
-
-.app-tab-icon svg {
-  display: block;
-  overflow: visible;
-}
-
-.app-tab.is-on {
-  color: var(--app-accent);
-}
-
-.app-tab.is-on .app-tab-icon {
-  color: var(--app-accent);
-}
-
-.app-type-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 18px;
-}
-
-.app-type-card {
-  background: var(--app-card);
-  border: 1px solid transparent;
-  border-radius: 16px;
-  padding: 14px 12px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-height: 132px;
-  color: var(--app-fg);
-  text-align: left;
-  width: 100%;
-  cursor: pointer;
-}
-
-.app-type-card.is-on {
-  border-color: var(--app-accent);
-  box-shadow: 0 0 0 1px var(--app-accent);
-}
-
-.app-type-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
-  background: var(--app-soft);
-  color: var(--app-accent);
-  display: grid;
-  place-items: center;
-  margin-bottom: 2px;
-}
-
-.app-type-num {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--app-accent);
-  letter-spacing: 0.04em;
-}
-
-.app-type-card strong {
-  font-size: 13px;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
-}
-
-.app-type-card span:last-child {
-  font-size: 11px;
-  color: var(--app-muted);
-  line-height: 1.4;
-}
-
-.app-chips {
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  margin-bottom: 14px;
-  padding-bottom: 2px;
-}
-
-.app-chip {
-  flex: none;
-  height: 32px;
-  padding: 0 12px;
-  border-radius: 99px;
-  background: var(--app-card);
-  font-size: 12px;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  color: var(--app-muted);
-}
-
-.app-chip.is-on {
-  background: var(--app-fg);
-  color: var(--app-bg);
-}
-
-.app-tpl-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.app-tpl {
-  color: var(--app-fg);
-}
-
-.app-tpl-img {
-  position: relative;
-  height: 110px;
-  border-radius: 14px;
-  overflow: hidden;
-  background: var(--app-preview-img);
-  margin-bottom: 8px;
-}
-
-.app-tpl strong {
-  display: block;
-  font-size: 13px;
-}
-
-.app-tpl span {
-  font-size: 11px;
-  color: var(--app-muted);
-}
-
-.app-soan-page {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding-bottom: 24px;
-}
-
-.app-soan-list {
-  list-style: none;
-  background: var(--app-card);
-  border-radius: 18px;
-  overflow: visible;
-  flex: none;
-}
-
-.app-soan-item.is-locked {
-  opacity: 0.72;
-  pointer-events: none;
-}
-
-.app-soan-list li + li {
-  border-top: 1px solid var(--app-line);
-}
-
-.app-soan-idx {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: var(--app-soft);
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--app-accent);
-  flex: none;
-}
-
-.app-soan-item div {
-  flex: 1;
-}
-
-.app-soan-item strong {
-  font-size: 14px;
-}
-
-.app-soan-item p {
-  font-size: 12px;
-  color: var(--app-muted);
-}
-
-.app-soan-go {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--app-accent);
-}
-
-.app-btn-dark {
-  background: var(--app-soft);
-  color: var(--app-fg);
-}
-
-.app-btn-full {
-  width: 100%;
-  margin-top: 10px;
-}
-
-.app-note {
-  font-size: 12px;
-  color: var(--app-muted);
-  margin: 12px 2px 0;
-}
-
-.app-preview {
-  background: var(--app-card);
-  border-radius: 16px;
-  overflow: hidden;
-  padding-bottom: 16px;
-}
-
-.app-preview-bar {
-  display: flex;
-  gap: 6px;
-  padding: 10px 12px;
-  background: var(--app-soft);
-}
-
-.app-preview-bar span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--app-muted-2);
-}
-
-.app-preview-hero {
-  padding: 18px 16px 8px;
-}
-
-.app-preview-hero small {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--app-accent);
-}
-
-.app-preview-hero h2 {
-  font-size: 20px;
-  letter-spacing: -0.03em;
-  margin: 6px 0;
-}
-
-.app-preview-hero p {
-  font-size: 13px;
-  color: var(--app-muted);
-}
-
-.app-preview-price {
-  display: block;
-  margin: 8px 0 4px;
-  font-size: 18px;
-}
-
-.app-preview-benefits {
-  list-style: disc;
-  margin: 0 16px 12px 32px;
-  font-size: 13px;
-}
-
-.app-preview-products {
-  list-style: none;
-  margin: 0 16px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.app-preview-products li {
-  background: var(--app-bg);
-  border-radius: 12px;
-  padding: 10px 12px;
-}
-
-.app-preview-products strong {
-  display: block;
-  font-size: 13px;
-}
-
-.app-preview-products span {
-  font-size: 12px;
-  color: var(--app-muted);
-}
-
-.app-product-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.app-product-card {
-  background: var(--app-card);
-  border-radius: 16px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.app-product-card .app-field {
-  background: var(--app-bg);
-}
-
-.app-product-card-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.app-product-remove {
-  border: 0;
-  background: none;
-  color: #9b2c2c;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.app-preview-review {
-  margin: 0 16px 12px;
-  padding: 12px;
-  background: var(--app-bg);
-  border-radius: 12px;
-}
-
-.app-preview-review p {
-  font-size: 13px;
-  line-height: 1.4;
-}
-
-.app-preview-review cite {
-  display: block;
-  margin-top: 6px;
-  font-size: 12px;
-  font-style: normal;
-  color: var(--app-muted);
-}
-
-.app-preview-cta-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  margin: 0 16px 12px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.app-preview-cta {
-  display: inline-block;
-  margin-top: 12px;
-  background: var(--app-fg);
-  color: var(--app-bg);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 8px 12px;
-  border-radius: 10px;
-}
-
-.app-preview-row {
-  height: 8px;
-  margin: 10px 16px;
-  border-radius: 99px;
-  background: var(--app-soft);
-}
-
-.app-preview-row.short {
-  width: 55%;
-}
-
-.app-avatar {
-  text-decoration: none;
-}
-
-.app-back {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--app-accent);
-  margin-bottom: 10px;
-}
-
-.app-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-bottom: 8px;
-}
-
-.app-toggle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  background: var(--app-card);
-  border-radius: 12px;
-  padding: 12px 14px;
-}
-
-.app-toggle input {
-  width: 16px;
-  height: 16px;
-}
-
-.app-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  background: var(--app-card);
-  border-radius: 14px;
-  padding: 12px 14px;
-}
-
-.app-field span {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.app-field input,
-.app-field textarea,
-.app-field select {
-  width: 100%;
-  border: 1px solid var(--app-line);
-  border-radius: 10px;
-  padding: 10px 12px;
-  font-size: 15px;
-  background: var(--app-bg);
-  color: var(--app-fg);
-}
-
-.app-field input::placeholder,
-.app-field textarea::placeholder {
-  color: var(--app-faint);
-  opacity: 1;
-}
-
-.app-field textarea {
-  resize: vertical;
-  min-height: 72px;
-  line-height: 1.4;
-}
-
-.app-field small {
-  font-size: 11px;
-  color: var(--app-faint);
-  align-self: flex-end;
-}
-
-.app-form-error {
-  font-size: 13px;
-  color: #9b2c2c;
-}
-
-.app-form-ok {
-  font-size: 13px;
-  color: #276749;
-}
-
-.app-preview-blocks {
-  list-style: none;
-  margin: 8px 12px 0;
-  border-top: 1px solid var(--app-line);
-}
-
-.app-preview-blocks li {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 10px 4px;
-  border-bottom: 1px solid var(--app-line);
-}
-
-.app-preview-blocks strong {
-  font-size: 12px;
-}
-
-.app-preview-blocks span {
-  font-size: 12px;
-  color: var(--app-muted);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.app-preview-blocks li.is-off span {
-  color: var(--app-faint);
-}
-
-.app-chat-screen {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  padding: 4px 0 0;
-}
-
-.app-chat-screen .app-home-top {
-  padding: 0 18px;
-  margin-bottom: 10px;
-}
-
-.app-chat-list {
-  flex: 1;
-  min-height: 0;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 4px 18px 20px;
-  scroll-padding-bottom: 20px;
-}
-
-.app-chat-end {
-  flex: none;
-  height: 12px;
-}
-
-.app-bubble {
-  align-self: flex-start;
-  max-width: 82%;
-  background: var(--app-card);
-  border-radius: 14px 14px 14px 4px;
-  padding: 8px 12px;
-}
-
-.app-bubble.mine {
-  align-self: flex-end;
-  background: var(--app-fg);
-  color: var(--app-bg);
-  border-radius: 14px 14px 4px 14px;
-}
-
-.app-bubble strong {
-  display: block;
-  font-size: 11px;
-  margin-bottom: 2px;
-  opacity: 0.7;
-}
-
-.app-bubble p {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.4;
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-.app-chat-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-  flex-shrink: 0;
-  margin: 0;
-  padding: 10px 12px 12px;
-  background: var(--app-bg);
-  border-top: 1px solid var(--app-line);
-}
-
-.app-chat-form input {
-  flex: 1;
-  height: 42px;
-  border: 0;
-  border-radius: 12px;
-  padding: 0 12px;
-  background: var(--app-card);
-  font-size: 14px;
-  color: var(--app-fg);
-}
-
-.app-chat-form .app-btn {
-  flex: none;
-  padding: 0 14px;
-}
-
-.app-chat-attach {
-  height: 42px;
-  padding: 0 12px;
-  border: 0;
-  border-radius: 12px;
-  background: var(--app-soft);
-  color: var(--app-fg);
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  flex: none;
-}
-
-.app-chat-form .app-form-error {
-  width: 100%;
-  margin: 0;
-}
-
-.chat-pins {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 0 18px 8px;
-}
-
-.chat-pin-chip {
-  flex: none;
-  border: 0;
-  border-radius: 99px;
-  background: var(--app-soft);
-  color: var(--app-fg);
-  font-size: 12px;
-  font-weight: 600;
-  padding: 6px 10px;
-  max-width: 200px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.chat-swipe {
-  position: relative;
-  width: 100%;
-  flex: none;
-  overflow-x: hidden;
-  overflow-y: visible;
-}
-
-.chat-swipe-action {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 48px;
-  background: transparent;
-  pointer-events: none;
-}
-
-.chat-swipe-inner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  background: var(--app-bg, #f4f1ec);
-  touch-action: pan-y;
-}
-
-.chat-img {
-  display: block;
-  max-width: min(220px, 70vw);
-  border-radius: 10px;
-  margin: 6px 0 4px;
-}
-
-.chat-quote {
-  display: grid;
-  gap: 2px;
-  width: 100%;
-  text-align: left;
-  border: 0;
-  border-left: 3px solid #6d8cff;
-  background: rgba(15, 18, 28, 0.08);
-  border-radius: 0 8px 8px 0;
-  padding: 6px 8px;
-  margin: 4px 0 6px;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-}
-
-.chat-quote strong {
-  font-size: 12px;
-  opacity: 1;
-  margin: 0;
-}
-
-.chat-quote span {
-  font-size: 12px;
-  line-height: 1.35;
-  opacity: 0.62;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.app-bubble.mine .chat-quote {
-  background: rgba(255, 255, 255, 0.14);
-  border-left-color: #b7c6ff;
-}
-
-.chat-reply-bar {
-  flex: 1 0 100%;
-  display: flex;
-  align-items: stretch;
-  gap: 8px;
-}
-
-.chat-reply-bar .chat-quote {
-  margin: 0;
-  cursor: default;
-}
-
-.chat-reply-close {
-  flex: none;
-  width: 32px;
-  border: 0;
-  background: transparent;
-  font-size: 22px;
-  line-height: 1;
-  color: inherit;
-  cursor: pointer;
-  opacity: 0.6;
-}
-
-.app-settings-head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-.app-settings-head-link {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.app-settings-avatar-img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex: none;
-}
-
-.app-settings-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--app-accent);
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-size: 18px;
-  font-weight: 700;
-  flex: none;
-}
-
-.app-settings-who {
-  flex: 1;
-  min-width: 0;
-}
-
-.app-settings-who strong {
-  display: block;
-  font-size: 18px;
-  letter-spacing: -0.02em;
-}
-
-.app-settings-who span {
-  display: block;
-  font-size: 12px;
-  color: var(--app-muted);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.app-settings-logout {
-  width: 40px;
-  height: 40px;
-  border: 0;
-  border-radius: 12px;
-  background: var(--app-soft);
-  color: var(--app-accent);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  flex: none;
-}
-
-.app-settings-list {
-  background: var(--app-card);
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.app-settings-row {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 13px 14px;
-  border: 0;
-  background: transparent;
-  color: var(--app-fg);
-  font-size: 15px;
-  font-weight: 600;
-  text-align: left;
-  cursor: pointer;
-  border-bottom: 1px solid var(--app-line);
-}
-
-.app-settings-list > div:last-child .app-settings-row {
-  border-bottom: 0;
-}
-
-.app-settings-row span:nth-child(2) {
-  flex: 1;
-}
-
-.app-settings-ico {
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  color: var(--app-accent);
-  flex: none;
-}
-
-.app-settings-row svg:last-child {
-  color: var(--app-faint);
-  flex: none;
-}
-
-.app-settings-panel {
-  padding: 0 14px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.app-settings-panel p {
-  font-size: 13px;
-  color: var(--app-muted);
-}
-
-.app-settings-panel input {
-  height: 40px;
-  border: 1px solid var(--app-line);
-  border-radius: 10px;
-  padding: 0 12px;
-  background: var(--app-bg);
-  font-size: 14px;
-}
-
-.app-account-card {
-  background: var(--app-card);
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.app-sec-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--app-muted);
-  margin: 4px 4px 8px;
-}
-
-.app-nav-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  background: var(--app-card);
-  border-radius: 16px;
-  color: inherit;
-  margin-bottom: 8px;
-}
-
-.app-nav-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex: none;
-}
-
-.app-nav-letter {
-  display: grid;
-  place-items: center;
-  background: var(--app-accent);
-  color: #fff;
-  font-weight: 700;
-}
-
-.app-nav-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  background: var(--app-card);
-  border-radius: 16px;
-  color: inherit;
-  margin-bottom: 8px;
-}
-
-.app-nav-row.is-in-card {
-  margin: 0;
-  border-radius: 0;
-  border-bottom: 1px solid var(--app-line);
-}
-
-.app-nav-row.is-in-card:last-child {
-  border-bottom: 0;
-}
-
-.app-nav-ico {
-  width: 28px;
-  display: grid;
-  place-items: center;
-  color: var(--app-muted);
-  flex: none;
-}
-
-.app-nav-text {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.app-nav-text small {
-  font-size: 12px;
-  color: var(--app-muted);
-}
-
-.app-nav-text strong {
-  font-size: 15px;
-}
-
-.app-nav-card svg:last-child,
-.app-nav-row svg:last-child {
-  color: var(--app-faint);
-  flex: none;
-}
-
-.app-gender-picks {
-  display: flex;
-  gap: 10px;
-}
-
-.app-gender-pick {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  border: 1px solid var(--app-line);
-  background: var(--app-bg);
-  color: var(--app-muted);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-}
-
-.app-gender-pick.is-on {
-  background: var(--app-fg);
-  color: var(--app-bg);
-  border-color: var(--app-fg);
-}
-
-.app-account-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 14px;
-  border-bottom: 1px solid var(--app-line);
-}
-
-.app-account-row:last-child {
-  border-bottom: 0;
-}
-
-.app-account-row span {
-  font-size: 13px;
-  color: var(--app-muted);
-}
-
-.app-account-row strong {
-  font-size: 16px;
-  letter-spacing: 0.08em;
-  font-variant-numeric: tabular-nums;
-}
-
-.app-auth-row {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--app-line);
-}
-
-.app-auth-row:last-child {
-  border-bottom: 0;
-}
-
-.app-auth-row span {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--app-muted);
-}
-
-.app-auth-row input {
-  width: 100%;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  font-size: 16px;
-  color: var(--app-fg);
-}
-
-.app-auth-switch {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  border: 0;
-  background: none;
-  color: var(--app-accent);
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  padding: 12px 8px;
-  text-align: center;
-  text-decoration: none;
-}
-
-.app-avatar-edit {
-  width: 100%;
-  border: 0;
-  background: var(--app-card);
-  border-radius: 16px;
-  padding: 20px 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  margin-bottom: 12px;
-}
-
-.app-avatar-edit img,
-.app-avatar-edit span {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: grid;
-  place-items: center;
-  background: var(--app-accent);
-  color: #fff;
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.app-avatar-edit em {
-  font-style: normal;
-  font-size: 13px;
-  color: var(--app-accent);
-  font-weight: 600;
-}
-
-.app-crop {
-  background: var(--app-card);
-  border-radius: 16px;
-  padding: 16px;
-}
-
-.app-crop-pick {
-  position: relative;
-  display: grid;
-  place-items: center;
-  min-height: 160px;
-  border-radius: 12px;
-  background: var(--app-bg);
-  color: var(--app-accent);
-  font-weight: 600;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.app-crop-pick input[type="file"] {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.app-crop-view {
-  position: relative;
-  width: 240px;
-  height: 240px;
-  margin: 0 auto 12px;
-  overflow: hidden;
-  border-radius: 50%;
-  background: var(--app-fg);
-  touch-action: none;
-  cursor: grab;
-}
-
-.app-crop-view img {
-  position: absolute;
-  max-width: none;
-  user-select: none;
-  pointer-events: none;
-}
-
-.app-info-card {
-  background: var(--app-card);
-  border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 16px;
-}
-
-.app-info-card strong {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 8px;
-}
-
-.app-info-card p {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--app-muted);
-}
-
-.app-info-list {
-  list-style: none;
-  background: var(--app-card);
-  border-radius: 16px;
-  overflow: hidden;
-  margin: 0 0 16px;
-}
-
-.app-info-list li {
-  padding: 12px 14px;
-}
-
-.app-info-list li + li {
-  border-top: 1px solid var(--app-line);
-}
-
-.app-info-list strong {
-  display: block;
-  font-size: 14px;
-}
-
-.app-info-list span {
-  display: block;
-  margin-top: 2px;
-  font-size: 12px;
-  color: var(--app-muted);
-  line-height: 1.4;
-}
-
-.app-info-foot {
-  margin: 0 4px 8px;
-  font-size: 12px;
-  color: var(--app-faint);
-}
-
-.app-dl-full {
-  display: flex;
-  width: 100%;
-  height: 48px;
-  margin-bottom: 20px;
-  text-decoration: none;
-}
-
-.app-settings-soon {
-  margin: 0;
-  padding: 0 14px 14px;
-  font-size: 13px;
-  color: var(--app-muted);
-}
-
-.app-theme-picks {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  padding: 0 14px 14px;
-}
-
-.app-theme-pick {
-  height: 40px;
-  border: 1px solid var(--app-line);
-  border-radius: 12px;
-  background: var(--app-bg);
-  color: var(--app-fg);
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.app-theme-pick.is-on {
-  background: var(--app-fg);
-  color: var(--app-bg);
-  border-color: var(--app-fg);
-}
-
-.app-phone.is-waving::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 40;
-  pointer-events: none;
-  background: radial-gradient(
-    circle at var(--app-rx) var(--app-ry),
-    color-mix(in srgb, var(--app-accent) 32%, transparent) 0%,
-    transparent 46%
-  );
-  animation: app-water-glow 0.9s ease-out forwards;
-}
-
-.app-phone.is-waving::after {
-  content: "";
-  position: absolute;
-  left: var(--app-rx);
-  top: var(--app-ry);
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 2px solid color-mix(in srgb, var(--app-accent) 80%, white);
-  box-shadow:
-    0 0 0 10px color-mix(in srgb, var(--app-accent) 22%, transparent),
-    0 0 0 22px color-mix(in srgb, var(--app-accent) 10%, transparent);
-  transform: translate(-50%, -50%) scale(0.15);
-  opacity: 0.95;
-  animation: app-water-ring 0.9s cubic-bezier(0.15, 0.7, 0.25, 1) forwards;
-  pointer-events: none;
-  z-index: 41;
-}
-
-.app-phone.is-waving-fill::before {
-  content: "";
-  position: absolute;
-  left: var(--app-rx);
-  top: var(--app-ry);
-  width: calc(var(--app-rr) * 2);
-  height: calc(var(--app-rr) * 2);
-  margin: calc(var(--app-rr) * -1) 0 0 calc(var(--app-rr) * -1);
-  border-radius: 50%;
-  background: var(--wave-fill);
-  transform: scale(0);
-  animation: app-water-fill 0.72s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-  z-index: 39;
-  pointer-events: none;
-  inset: auto;
-}
-
-@keyframes app-water-glow {
-  0% {
-    opacity: 0.7;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes app-water-ring {
-  to {
-    transform: translate(-50%, -50%) scale(calc(var(--app-rr) / 9));
-    opacity: 0;
-  }
-}
-
-@keyframes app-water-fill {
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes app-water-spread {
-  from {
-    clip-path: circle(0px at var(--app-rx) var(--app-ry));
-  }
-  to {
-    clip-path: circle(var(--app-rr) at var(--app-rx) var(--app-ry));
-  }
-}
-
-::view-transition-old(app-shell),
-::view-transition-new(app-shell) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-
-::view-transition-old(app-shell) {
-  z-index: 1;
-}
-
-::view-transition-new(app-shell) {
-  z-index: 2;
-  animation: app-water-spread 0.85s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-new(app-shell) {
-    animation: none;
-  }
-}
-
-@media (max-width: 480px), (display-mode: standalone) {
-  .app-stage {
-    padding: 0;
-  }
-
-  .app-stage-hint {
-    display: none;
-  }
-
-  .app-phone {
-    width: 100%;
-    height: 100dvh;
-    min-height: 100dvh;
-    border-radius: 0;
-    border: 0;
-    box-shadow: none;
-  }
-}
-
-html.app-native body:has(.app-stage) {
-  background: #f4f1ec;
-}
-
-html.app-native .app-stage {
-  min-height: 100dvh;
-  padding: 0;
-  justify-content: stretch;
-  align-items: stretch;
-}
-
-html.app-native .app-stage-hint {
-  display: none;
-}
-
-html.app-native .app-phone {
-  width: 100%;
-  height: 100dvh;
-  min-height: 100dvh;
-  max-width: none;
-  border-radius: 0;
-  border: 0;
-  box-shadow: none;
-}
-
-@media (display-mode: standalone) {
-  .app-tabbar {
-    padding-bottom: max(14px, env(safe-area-inset-bottom));
-  }
-}
-
-.app-install-card {
-  margin: 0 4px 10px;
-  padding: 12px 14px;
-  background: var(--app-soft);
-  border-radius: 14px;
-  display: grid;
-  gap: 8px;
-}
-
-.app-install-card p {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.45;
-  color: var(--app-muted);
-}
-
-.app-install-note {
-  margin: 0 16px 12px;
-  font-size: 13px;
-  color: var(--app-muted);
-}
-
-.app-chat-code-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin: 0 18px 12px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: var(--app-card);
-}
-
-.app-chat-code-card small {
-  display: block;
-  font-size: 11px;
-  color: var(--app-muted);
-}
-
-.app-chat-code-card strong {
-  font-size: 22px;
-  letter-spacing: 0.12em;
-}
-
-.app-chat-join {
-  display: flex;
-  gap: 8px;
-  margin: 0 18px 8px;
-}
-
-.app-chat-join input {
-  flex: 1;
-  height: 42px;
-  border: 0;
-  border-radius: 12px;
-  padding: 0 12px;
-  background: var(--app-card);
-  font-size: 14px;
-  color: var(--app-fg);
-  text-transform: uppercase;
-}
-
-.app-chat-create {
-  margin: 0 18px 12px;
-  border: 0;
-  background: none;
-  color: var(--app-accent, #5b4bdd);
-  font-size: 13px;
-  font-weight: 700;
-  text-align: left;
-  padding: 0;
-  cursor: pointer;
-}
-
-.app-chat-inbox {
-  flex: 1;
-  min-height: 0;
-  overflow: auto;
-  padding: 0 10px 16px;
-}
-
-.app-chat-inbox-item {
-  display: flex;
-  gap: 12px;
-  width: 100%;
-  padding: 10px 8px;
-  border-radius: 12px;
-  color: inherit;
-  text-decoration: none;
-}
-
-.app-chat-inbox-item:hover,
-.app-chat-inbox-item:active {
-  background: var(--app-soft);
-}
-
-.app-chat-inbox-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex: none;
-  background: #ece8ff;
-}
-
-.app-chat-inbox-avatar.is-letter {
-  display: grid;
-  place-items: center;
-  color: #4f43c8;
-  font-weight: 800;
-}
-
-.app-chat-inbox-copy {
-  flex: 1;
-  min-width: 0;
-}
-
-.app-chat-inbox-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.app-chat-inbox-row strong {
-  font-size: 15px;
-}
-
-.app-chat-inbox-row time,
-.app-chat-inbox-row span {
-  font-size: 11px;
-  color: var(--app-muted);
-  flex: none;
-}
-
-.app-chat-inbox-preview {
-  display: block;
-  margin-top: 2px;
-  font-size: 13px;
-  color: var(--app-muted);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.app-chat-back {
-  display: inline-block;
-  margin-bottom: 4px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--app-muted);
-}
-
-.app-chat-share {
-  border: 0;
-  background: none;
-  padding: 0;
-  color: var(--app-accent, #5b4bdd);
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.app-chat-screen > .app-form-error {
-  margin: 0 18px 8px;
-}
-
-.app-page { display: none; flex: 1; flex-direction: column; min-height: 0; }
-.app-page.is-on { display: flex; }
-.app-compose-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
-.app-compose-field label { font-size: 12px; color: var(--app-muted); font-weight: 600; }
-.app-compose-field input, .app-compose-field textarea, .app-compose-field select {
-  border: 1px solid var(--app-line); background: var(--app-card); color: var(--app-fg);
-  border-radius: 12px; padding: 10px 12px; font: inherit;
-}
-.app-compose-field textarea { min-height: 72px; resize: vertical; }
-.app-preview-card { background: var(--app-card); border-radius: 18px; overflow: hidden; border: 1px solid var(--app-line); }
-.app-preview-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
-.app-preview-body { padding: 16px; }
-.app-preview-body h2 { font-size: 20px; margin: 0 0 6px; }
-.app-preview-price { color: var(--app-accent); font-weight: 800; margin: 8px 0; }
-.app-chat-list { display: flex; flex-direction: column; gap: 8px; flex: 1; overflow: auto; padding-bottom: 8px; }
-.app-chat-bubble { max-width: 82%; padding: 10px 12px; border-radius: 14px; font-size: 14px; }
-.app-chat-bubble.me { align-self: flex-end; background: var(--app-accent); color: #fff; }
-.app-chat-bubble.bot { align-self: flex-start; background: var(--app-soft); }
-.app-chat-form { display: flex; gap: 8px; }
-.app-chat-form input { flex: 1; border: 1px solid var(--app-line); border-radius: 999px; padding: 10px 14px; background: var(--app-card); color: var(--app-fg); font: inherit; }
-button.app-soan-item, button.app-settings-row, button.app-settings-head-link {
-  width: 100%; text-align: left; border: 0; background: transparent; font: inherit; color: inherit; cursor: pointer;
-}
-button.app-soan-item { display: flex; align-items: center; gap: 12px; padding: 14px 16px; }
-button.app-soan-item.is-locked { pointer-events: auto; }
-.app-tpl { border: 0; background: transparent; padding: 0; text-align: left; cursor: pointer; width: 100%; font: inherit; color: inherit; }
-.app-tpl-img img { width: 100%; height: 110px; object-fit: cover; display: block; }
-.app-site-thumb { position: relative; width: 64px; height: 64px; border-radius: 12px; overflow: hidden; flex: none; background: var(--app-preview-img); }
-.app-site-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.app-chat-inbox-item { width: 100%; border: 0; background: transparent; font: inherit; color: inherit; cursor: pointer; text-align: left; }
-html.app-native body { background: #f4f1ec; }
-html.app-native .app-stage { min-height: 100dvh; padding: 0; justify-content: stretch; align-items: stretch; }
-html.app-native .app-stage-hint { display: none; }
-html.app-native .app-phone {
-  width: 100%; height: 100dvh; min-height: 100dvh; max-width: none;
-  border-radius: 0; border: 0; box-shadow: none;
-}
-  </style>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("webstudio-theme") === "light") {
+          document.documentElement.classList.add("theme-light-pending");
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
-  <div class="app-stage">
-    <p class="app-stage-hint">App khách</p>
-    <div class="app-phone" id="phone" data-theme="light">
-      <div class="app-phone-body" id="phoneBody"></div>
-      <nav class="app-tabbar" aria-label="Điều hướng app" id="tabbar"></nav>
-    </div>
-  </div>
   <script>
-const SITE_TYPES = [
-  { id: "landing", name: "Landing Page", short: "Landing", blurb: "1 trang, chạy ads, thu lead, bán 1 sản phẩm." },
-  { id: "company", name: "Website công ty", short: "Công ty", blurb: "Giới thiệu doanh nghiệp, dịch vụ, đội ngũ, liên hệ." },
-  { id: "saas", name: "Website Startup / SaaS", short: "SaaS", blurb: "Giới thiệu sản phẩm, bảng giá, đăng ký dùng thử." },
-  { id: "ecommerce", name: "Web bán hàng / E-commerce", short: "Bán hàng", blurb: "Danh mục, sản phẩm, giỏ hàng, đặt hàng COD." }
-];
-const TYPE_TEMPLATE = { landing: "aura", company: "nova", saas: "pulse", ecommerce: "green" };
-const TEMPLATES = [
-  { id: "aura", type: "landing", name: "AURA Glow", use: "Mỹ phẩm / skincare", image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80" },
-  { id: "event", type: "landing", name: "Open Day", use: "Sự kiện / workshop", image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" },
-  { id: "nova", type: "company", name: "Nova Legal", use: "Văn phòng / dịch vụ", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" },
-  { id: "build", type: "company", name: "KienBuild", use: "Xây dựng / nội thất", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" },
-  { id: "pulse", type: "saas", name: "Pulse Analytics", use: "SaaS dashboard", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" },
-  { id: "flow", type: "saas", name: "Flow CRM", use: "Startup B2B", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" },
-  { id: "green", type: "ecommerce", name: "Green Store", use: "Tạp hóa / organic", image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" },
-  { id: "mode", type: "ecommerce", name: "Mode Apparel", use: "Thời trang", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80" }
-];
-const CHECKS = {
-  landing: [
-    { id: "hero", label: "Tiêu đề & giá Hero" },
-    { id: "phone", label: "Số điện thoại / Zalo" },
-    { id: "lead", label: "Mô tả ngắn" },
-    { id: "cta", label: "Nút đặt hàng (CTA)" }
-  ],
-  company: [
-    { id: "hero", label: "Tên công ty" },
-    { id: "lead", label: "Giới thiệu" },
-    { id: "phone", label: "Liên hệ" },
-    { id: "cta", label: "Nút liên hệ" }
-  ],
-  saas: [
-    { id: "hero", label: "Tên sản phẩm" },
-    { id: "lead", label: "Lợi ích" },
-    { id: "phone", label: "Email / Zalo" },
-    { id: "cta", label: "Nút dùng thử" }
-  ],
-  ecommerce: [
-    { id: "shop_home", label: "Trang chủ shop" },
-    { id: "products", label: "Thông tin sản phẩm" },
-    { id: "cart", label: "Giỏ hàng" },
-    { id: "payment", label: "Thanh toán" }
-  ]
-};
-function svg(inner) {
-  return '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + inner + "</svg>";
-}
-const ICONS = {
-  home: svg('<path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/>'),
-  mau: svg('<rect x="4" y="4" width="7" height="7" rx="1.2"/><rect x="13" y="4" width="7" height="7" rx="1.2"/><rect x="4" y="13" width="7" height="7" rx="1.2"/><rect x="13" y="13" width="7" height="7" rx="1.2"/>'),
-  soan: svg('<path d="M12 20h8"/><path d="M16.4 3.8a2 2 0 0 1 2.8 2.8L8 18l-4 1 1-4Z"/>'),
-  chat: svg('<path d="M5 6.5h10.5A2.5 2.5 0 0 1 18 9v5.5A2.5 2.5 0 0 1 15.5 17H11l-3.5 3v-3H5A2 2 0 0 1 3 15V8.5A2 2 0 0 1 5 6.5z"/><path d="M8 11h6M8 8.8h4"/>'),
-  xem: svg('<ellipse cx="12" cy="12" rx="9" ry="6.5"/><circle cx="12" cy="12" r="2.5"/>'),
-  toi: svg('<circle cx="12" cy="8" r="3.2"/><path d="M5 19.5c1.2-3.2 3.6-4.8 7-4.8s5.8 1.6 7 4.8"/>')
-};
-const TYPE_ICONS = {
-  landing: svg('<rect x="6" y="3.5" width="12" height="17" rx="1.5"/><path d="M9 8h6M9 12h6M9 16h4"/>'),
-  company: svg('<path d="M5 21V5.5A1.5 1.5 0 0 1 6.5 4h7A1.5 1.5 0 0 1 15 5.5V21"/><path d="M15 10h3.5A1.5 1.5 0 0 1 20 11.5V21"/><path d="M9 8h2M9 12h2M9 16h2M5 21h14"/>'),
-  saas: svg('<path d="M12 3c3 2 5.5 6 5.5 10.5 0 1.5-.3 2.8-.8 3.9L12 21l-4.7-3.6A9 9 0 0 1 6.5 13.5C6.5 9 9 5 12 3z"/><circle cx="12" cy="11" r="1.6"/>'),
-  ecommerce: svg('<path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6.5A3 3 0 0 1 12 3.5 3 3 0 0 1 15 6.5V8"/>')
-};
-const MENU_ICONS = {
-  "ho-so": ICONS.toi,
-  "giao-dien": svg('<path d="M12 4a8 8 0 1 0 0 16h1.2a2.2 2.2 0 0 0 2-3.1 2.2 2.2 0 0 1 2-3.2H18A8 8 0 0 0 12 4z"/>'),
-  "quyen-rieng-tu": svg('<path d="M12 3.5 19 6.5v5.2c0 4.2-2.8 7.4-7 8.8-4.2-1.4-7-4.6-7-8.8V6.5z"/><path d="m9 12 2 2 4-4"/>'),
-  "tai-khoan": svg('<path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="5" y="11" width="14" height="9" rx="2"/>'),
-  "nha-phat-trien": svg('<path d="M8 4.5h3.2V6a1.6 1.6 0 1 0 3.2 0V4.5H17A1.5 1.5 0 0 1 18.5 6v3.2H17a1.6 1.6 0 1 0 0 3.2h1.5V16A1.5 1.5 0 0 1 17 17.5h-2.6V16a1.6 1.6 0 1 0-3.2 0v1.5H8A1.5 1.5 0 0 1 6.5 16v-3.2H8a1.6 1.6 0 1 0 0-3.2H6.5V6A1.5 1.5 0 0 1 8 4.5z"/>'),
-  "gioi-thieu": svg('<circle cx="12" cy="12" r="8"/><path d="M12 10v5M12 7.5v.5"/>'),
-  "tai-apk": svg('<path d="M12 4v10M8 10l4 4 4-4M5 18h14"/>')
-};
-const LOGOUT = svg('<path d="M10 4H6.5A1.5 1.5 0 0 0 5 5.5v13A1.5 1.5 0 0 0 6.5 20H10"/><path d="M10 12h9M16 8.5 19.5 12 16 15.5"/>');
-function makeCode() {
-  return Math.random().toString(16).slice(2, 8).toUpperCase();
-}
-function formatVN(iso) {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "";
-  const p = (n) => String(n).padStart(2, "0");
-  return p(d.getHours()) + ":" + p(d.getMinutes()) + " " + p(d.getDate()) + "/" + p(d.getMonth() + 1) + "/" + d.getFullYear();
-}
-const KEY = "ws_github_app_khach";
-const TABS = [
-  { id: "home", label: "Trang chủ" },
-  { id: "mau", label: "Mẫu" },
-  { id: "soan", label: "Soạn" },
-  { id: "chat", label: "Chat" },
-  { id: "xem", label: "Xem" },
-  { id: "toi", label: "Tôi" }
-];
+    if (document.documentElement.classList.contains("theme-light-pending")) {
+      document.body.classList.add("theme-light");
+      document.documentElement.classList.remove("theme-light-pending");
+    }
+  </script>
+  <div id="top">
+        <header class="site-header" id="siteHeader">
+      <div class="container">
+        <nav class="site-nav">
+          <a class="logo" href="index.html">Web<span>Studio.</span></a>
 
-function load() {
-  try {
-    const raw = JSON.parse(localStorage.getItem(KEY) || "{}");
-    return {
-      typeId: raw.typeId || "landing",
-      templateId: raw.templateId || "aura",
-      name: raw.name || "",
-      headline: raw.headline || "",
-      lead: raw.lead || "",
-      price: raw.price || "",
-      cta: raw.cta || "",
-      phone: raw.phone || "",
-      theme: raw.theme === "dark" ? "dark" : "light",
-      userName: raw.userName || "Khách",
-      birthday: raw.birthday || "",
-      myCode: raw.myCode || makeCode(),
-      inviteCode: raw.inviteCode || makeCode(),
-      lastLogin: raw.lastLogin || new Date().toISOString(),
-      groups: Array.isArray(raw.groups) ? raw.groups : [],
-      savedTypes: raw.savedTypes && typeof raw.savedTypes === "object" ? raw.savedTypes : {},
-      messages: Array.isArray(raw.messages) ? raw.messages : [
-        { who: "bot", text: "Chào bạn. App khách đang chạy trên Render — soạn nội dung và xem ngay trên điện thoại." }
-      ]
-    };
-  } catch {
-    return {
-      typeId: "landing",
-      templateId: "aura",
-      name: "",
-      headline: "",
-      lead: "",
-      price: "",
-      cta: "",
-      phone: "",
-      theme: "light",
-      userName: "Khách",
-      messages: [{ who: "bot", text: "Chào bạn. App khách đang chạy trên Render." }]
-    };
-  }
-}
-function save(s) { localStorage.setItem(KEY, JSON.stringify(s)); }
-let state = load();
-save(state);
+          <div class="nav-cluster" id="navLinks">
+            <ul class="nav-pill">
+              <li><a href="index.html">Trang chủ</a></li>
+              <li><a href="about.html">Về chúng tôi</a></li>
+              <li class="has-dropdown">
+                <button type="button" class="nav-drop-btn" aria-expanded="false">
+                  Thiết kế Website <span class="chev" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown">
+                  <li><a href="landing.html">Landing Page</a></li>
+                  <li><a href="company.html">Website công ty</a></li>
+                  <li><a href="saas.html">Website Startup / SaaS</a></li>
+                  <li><a href="ecommerce.html">Web bán hàng / E-commerce</a></li>
+                </ul>
+              </li>
+              <li class="has-dropdown">
+                <button type="button" class="nav-drop-btn" aria-expanded="false">
+                  Dịch vụ <span class="chev" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown">
+                  <li><a href="index.html#services">Lập trình web</a></li>
+                  <li><a href="index.html#pricing">Bảng giá</a></li>
+                  <li><a href="tai-ung-dung.html">Tải ứng dụng</a></li>
+                </ul>
+              </li>
+              <li><a href="collection.html">Dự án</a></li>
+              <li class="has-dropdown more">
+                <button type="button" class="nav-more" aria-label="Thêm menu" aria-expanded="false">⋯</button>
+                <ul class="dropdown">
+                  <li><a href="cart.html">Giỏ yêu cầu</a></li>
+                  <li><a href="index.html#process">Quy trình</a></li>
+                </ul>
+              </li>
+            </ul>
 
-function tpl() {
-  return TEMPLATES.find((t) => t.id === state.templateId) || TEMPLATES[0];
-}
-function typeInfo() {
-  return SITE_TYPES.find((t) => t.id === state.typeId) || SITE_TYPES[0];
-}
-function checks() {
-  return (CHECKS[state.typeId] || CHECKS.landing).map((c) => ({
-    ...c,
-    done: Boolean(state[c.id === "hero" ? "headline" : c.id])
-  }));
-}
-function progress() {
-  const list = checks();
-  return list.length ? Math.round((list.filter((c) => c.done).length / list.length) * 100) : 0;
-}
-const SEED = {
-  landing: { headline: "Da hết mụn, sáng mịn 14 ngày — cho da dầu, không kích ứng.", lead: "AURA Glow Essence 30ml: niacinamide 5% + peptide.", price: "449.000đ", cta: "Mua ngay", phone: "0900000000", b1: "COD — trả khi nhận", b2: "Freeship toàn quốc", b3: "Đổi trả 7 ngày", quote: "Dùng 10 ngày mụn ẩn giảm rõ, không khô da.", author: "Minh Anh, 26 tuổi" },
-  company: { headline: "Nova Legal", lead: "Tư vấn pháp lý cho doanh nghiệp vừa và nhỏ.", price: "", cta: "Nhận tư vấn", phone: "0900000000", b1: "Tư vấn hợp đồng", b2: "Lao động — nhân sự", b3: "Tranh chấp dân sự", quote: "Đội ngũ luật sư đồng hành cùng SME.", author: "Thành lập 2018" },
-  saas: { headline: "Hiểu khách hàng chỉ trong 1 bảng.", lead: "Pulse Analytics — dashboard realtime cho startup.", price: "199.000đ/tháng", cta: "Dùng thử", phone: "0900000000", b1: "Báo cáo tự động", b2: "Tích hợp Slack", b3: "Không cần SQL", quote: "Setup 10 phút, team sales dùng ngay.", author: "Lan, Growth" },
-  ecommerce: { headline: "Green Store", lead: "Rau củ hữu cơ, giao trong ngày.", price: "Từ 35.000đ", cta: "Đặt hàng COD", phone: "0900000000", b1: "Tươi trong ngày", b2: "COD toàn quốc", b3: "Đổi trả 24h", quote: "Rau ngon, đóng gói sạch.", author: "Hương, Q.7" }
-};
-const CHEV = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>';
-const SUB_TAB = { "soan-noidung": "soan", "xem-preview": "xem", "chat-thread": "chat", "ho-so": "toi", "giao-dien": "toi", "quyen-rieng-tu": "toi", "tai-khoan": "toi", "nha-phat-trien": "toi", "gioi-thieu": "toi", "tai-apk": "toi" };
-function route() {
-  const id = (location.hash || "#home").slice(1).split("?")[0] || "home";
-  if (TABS.some((t) => t.id === id)) return { view: id, tab: id };
-  return { view: SUB_TAB[id] ? id : "home", tab: SUB_TAB[id] || "home" };
-}
-function page() { return route().view; }
-function seed() { return SEED[state.typeId] || SEED.landing; }
-function val(key) { return state[key] || seed()[key] || ""; }
-function go(id) {
-  location.hash = id;
-}
-function esc(s) {
-  return String(s || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-}
-function resolveApkUrl() {
-  let path = location.pathname || "/";
-  const last = path.split("/").pop() || "";
-  if (!path.endsWith("/") && !/\.[a-z0-9]+$/i.test(last)) path += "/";
-  if (!path.endsWith("/")) path = path.replace(/[^/]+$/, "");
-  return path + "WebStudio.apk";
-}
+            <div class="nav-tools">
+              <button type="button" class="icon-btn" id="searchOpen" aria-label="Tìm kiếm" aria-expanded="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+              <button type="button" class="icon-btn" id="themeToggle" aria-label="Chuyển sang chế độ sáng"><svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z"></path></svg></button>
+            </div>
 
-function renderHome() {
-  const type = typeInfo();
-  const t = tpl();
-  const list = checks();
-  const pct = progress();
-  return `
-    <header class="app-home-top">
-      <div>
-        <h1>Tạo website của bạn</h1>
-        <p>Chọn loại site — soạn trên điện thoại, xuất bản ngay</p>
+            <a class="nav-cta" href="contact.html">Tư vấn ngay</a>
+          </div>
+
+          <button type="button" class="menu-btn" id="menuBtn" aria-label="Mở menu">☰</button>
+        </nav>
       </div>
-      <button type="button" class="app-avatar" data-go="toi">${esc(state.userName.slice(0,1).toUpperCase())}</button>
     </header>
-    <div class="app-section-label">Các loại website</div>
-    <div class="app-type-grid">
-      ${SITE_TYPES.map((item, i) => `
-        <button type="button" class="app-type-card${state.typeId === item.id ? " is-on" : ""}" data-type="${item.id}">
-          <span class="app-type-icon">${TYPE_ICONS[item.id]}</span>
-          <span class="app-type-num">0${i + 1}</span>
-          <strong>${esc(item.name)}</strong>
-          <span>${esc(item.blurb)}</span>
-        </button>`).join("")}
-    </div>
-    <div class="app-section-label">Đang soạn</div>
-    <article class="app-site-card">
-      <div class="app-site-card-head">
-        <div class="app-site-thumb"><img src="${t.image}" alt="" /></div>
-        <div>
-          <h2>${esc(state.name || type.name)}</h2>
-          <p class="app-meta">${esc(type.name)} · ${esc(t.name)}</p>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div>
+              <div class="badge">
+                <span class="badge-dot"></span>
+                Nhận dự án thiết kế Website
+              </div>
+              <h1>
+                Website đẹp.
+                <br />
+                <span class="gradient-text">Chuyển đổi tốt.</span>
+              </h1>
+              <p class="hero-description">
+                Chúng tôi thiết kế và phát triển website hiện đại dành cho
+                doanh nghiệp, thương hiệu, cửa hàng và startup. Tối ưu giao
+                diện, tốc độ, SEO và trải nghiệm người dùng.
+              </p>
+              <div class="hero-actions">
+                <a href="contact.html" class="btn btn-primary">Bắt đầu dự án →</a>
+                <a href="tai-ung-dung.html" class="btn btn-secondary">Tải App khách Studio</a>
+              </div>
+              <div class="hero-info">
+                <div class="hero-stat"><strong>50+</strong><span>Dự án</span></div>
+                <div class="hero-stat"><strong>30+</strong><span>Khách hàng</span></div>
+                <div class="hero-stat"><strong>4</strong><span>Loại Website</span></div>
+              </div>
+            </div>
+            <div class="hero-preview">
+              <div class="browser-card">
+                <div class="browser">
+                  <div class="browser-top">
+                    <span class="circle"></span>
+                    <span class="circle"></span>
+                    <span class="circle"></span>
+                  </div>
+                  <div class="browser-content">
+                    <div class="mini-nav">
+                      <div class="mini-logo">WebStudio</div>
+                      <div class="mini-links">
+                        <span>Dịch vụ</span>
+                        <span>Dự án</span>
+                        <span>Liên hệ</span>
+                      </div>
+                    </div>
+                    <div class="mock-tag">Website chuyên nghiệp</div>
+                    <h3 class="mock-title">Thiết kế website hiện đại</h3>
+                    <h3 class="mock-title short">cho doanh nghiệp &amp; startup</h3>
+                    <div class="mock-text">
+                      <p>Giao diện đẹp, tốc độ cao, tối ưu SEO.</p>
+                      <p>Landing Page, Website công ty, E-commerce, SaaS.</p>
+                      <p>Từ ý tưởng đến website sẵn sàng ra mắt.</p>
+                    </div>
+                    <div class="mock-buttons">
+                      <span>Bắt đầu dự án</span>
+                      <span>Xem mẫu</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section">
+        <div class="container">
+          <div class="section-label">Dịch vụ</div>
+          <h2 class="section-title">Thiết kế website cho mọi nhu cầu kinh doanh.</h2>
+          <p class="section-description">
+            Từ Landing Page đơn giản đến hệ thống SaaS, chúng tôi xây dựng
+            website phù hợp với mục tiêu và mô hình kinh doanh của bạn.
+          </p>
+          <div class="services-grid">
+            <a class="service-card" href="landing.html">
+              <div class="service-number">01</div>
+              <div class="service-icon">⚡</div>
+              <h3>Landing Page</h3>
+              <p>
+                Landing Page tập trung vào chuyển đổi, phù hợp cho chạy quảng
+                cáo, giới thiệu sản phẩm, sự kiện hoặc thu thập khách hàng tiềm năng.
+              </p>
+              <div class="service-arrow">↗</div>
+            </a>
+            <a class="service-card" href="company.html">
+              <div class="service-number">02</div>
+              <div class="service-icon">🏢</div>
+              <h3>Website công ty</h3>
+              <p>
+                Website chuyên nghiệp giúp giới thiệu doanh nghiệp, dịch vụ,
+                đội ngũ, dự án và xây dựng uy tín thương hiệu trên Internet.
+              </p>
+              <div class="service-arrow">↗</div>
+            </a>
+            <a class="service-card" href="ecommerce.html">
+              <div class="service-number">03</div>
+              <div class="service-icon">🛒</div>
+              <h3>Web bán hàng / E-commerce</h3>
+              <p>
+                Website bán hàng hoàn chỉnh với danh mục sản phẩm, giỏ hàng,
+                đặt hàng, quản lý đơn và tích hợp các phương thức thanh toán.
+              </p>
+              <div class="service-arrow">↗</div>
+            </a>
+            <a class="service-card" href="saas.html">
+              <div class="service-number">04</div>
+              <div class="service-icon">🚀</div>
+              <h3>Website Startup / SaaS</h3>
+              <p>
+                Website và Web App dành cho Startup với Dashboard, đăng nhập,
+                tài khoản người dùng, subscription và các tính năng tùy chỉnh.
+              </p>
+              <div class="service-arrow">↗</div>
+            </a>
+            <a class="service-card" href="tai-ung-dung.html">
+              <div class="service-number">05</div>
+              <div class="service-icon">📲</div>
+              <h3>Tải App khách Studio</h3>
+              <p>
+                Tải WebStudio.apk về điện thoại Android để tự soạn website,
+                xem trước, chat hỗ trợ và chạy thử như một ứng dụng thật.
+              </p>
+              <div class="service-arrow">↗</div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="features section">
+        <div class="container">
+          <div class="section-label">Chất lượng</div>
+          <h2 class="section-title">Không chỉ đẹp. Website phải hoạt động hiệu quả.</h2>
+          <div class="features-grid">
+            <div class="feature">
+              <div class="feature-icon">✦</div>
+              <h3>UI/UX hiện đại</h3>
+              <p>Thiết kế giao diện rõ ràng, trực quan và phù hợp thương hiệu.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">⚡</div>
+              <h3>Tốc độ cao</h3>
+              <p>Tối ưu mã nguồn, hình ảnh và hiệu suất tải trang.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">📱</div>
+              <h3>Responsive</h3>
+              <p>Hiển thị đẹp trên máy tính, tablet và điện thoại.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">🔎</div>
+              <h3>SEO Friendly</h3>
+              <p>Cấu trúc website thân thiện với công cụ tìm kiếm.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">🔐</div>
+              <h3>Bảo mật</h3>
+              <p>Áp dụng các tiêu chuẩn bảo mật website hiện đại.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">⚙</div>
+              <h3>Dễ mở rộng</h3>
+              <p>Kiến trúc rõ ràng giúp thêm tính năng khi doanh nghiệp phát triển.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="section">
+        <div class="container">
+          <div class="section-label">Dự án</div>
+          <h2 class="section-title">Một số dự án website tiêu biểu.</h2>
+          <div class="portfolio-grid">
+            <a class="portfolio-item" href="saas.html">
+              <div class="portfolio-media">
+                <img
+                  class="portfolio-img portfolio-img--main"
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=1400&amp;q=80"
+                  alt="Nova Analytics SaaS dashboard"
+                  loading="lazy"
+                />
+                <img
+                  class="portfolio-img portfolio-img--hover"
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=1400&amp;q=80"
+                  alt="Nova Analytics analytics view"
+                  loading="lazy"
+                />
+              </div>
+              <span class="portfolio-badge">Startup / SaaS</span>
+              <div class="portfolio-name">
+                <h3>Nova Analytics</h3>
+                <p>SaaS Dashboard Platform</p>
+              </div>
+            </a>
+            <a class="portfolio-item" href="ecommerce.html">
+              <div class="portfolio-media">
+                <img
+                  class="portfolio-img portfolio-img--main"
+                  src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
+                  alt="Green Store online shopping"
+                  loading="lazy"
+                />
+                <img
+                  class="portfolio-img portfolio-img--hover"
+                  src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
+                  alt="Green Store product showcase"
+                  loading="lazy"
+                />
+              </div>
+              <span class="portfolio-badge">E-commerce</span>
+              <div class="portfolio-name">
+                <h3>Green Store</h3>
+                <p>Online Shopping</p>
+              </div>
+            </a>
+            <a class="portfolio-item" href="landing.html">
+              <div class="portfolio-media">
+                <img
+                  class="portfolio-img portfolio-img--main"
+                  src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
+                  alt="Aura Studio creative landing"
+                  loading="lazy"
+                />
+                <img
+                  class="portfolio-img portfolio-img--hover"
+                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
+                  alt="Aura Studio team collaboration"
+                  loading="lazy"
+                />
+              </div>
+              <span class="portfolio-badge">Landing Page</span>
+              <div class="portfolio-name">
+                <h3>Aura Studio</h3>
+                <p>Creative Landing Page</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="process" class="section">
+        <div class="container">
+          <div class="section-label">Quy trình</div>
+          <h2 class="section-title">Từ ý tưởng đến website hoàn chỉnh.</h2>
+          <div class="process-grid">
+            <article class="process-card">
+              <div class="process-number">01</div>
+              <h3>Trao đổi</h3>
+              <p>Tìm hiểu nhu cầu, khách hàng, sản phẩm và mục tiêu dự án.</p>
+            </article>
+            <article class="process-card">
+              <div class="process-number">02</div>
+              <h3>UI/UX Design</h3>
+              <p>Thiết kế bố cục, giao diện và trải nghiệm người dùng.</p>
+            </article>
+            <article class="process-card">
+              <div class="process-number">03</div>
+              <h3>Development</h3>
+              <p>Lập trình website, responsive và các tính năng cần thiết.</p>
+            </article>
+            <article class="process-card">
+              <div class="process-number">04</div>
+              <h3>Launch</h3>
+              <p>Kiểm thử, tối ưu và đưa website lên Internet.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="section">
+        <div class="container">
+          <div class="section-label">Bảng giá</div>
+          <h2 class="section-title">Gói thiết kế phù hợp với từng giai đoạn.</h2>
+          <div class="price-grid">
+            <div class="price-card">
+              <h3>Landing</h3>
+              <p class="price-desc">Phù hợp quảng cáo và giới thiệu sản phẩm.</p>
+              <div class="price">3.900.000đ</div>
+              <ul class="price-features">
+                <li>01 Landing Page</li>
+                <li>Responsive Mobile</li>
+                <li>Form liên hệ</li>
+                <li>Tối ưu tốc độ</li>
+                <li>SEO cơ bản</li>
+              </ul>
+              <a class="btn btn-secondary" href="contact.html">Chọn gói</a>
+            </div>
+            <div class="price-card popular">
+              <span class="popular-label">PHỔ BIẾN</span>
+              <h3>Business</h3>
+              <p class="price-desc">Website chuyên nghiệp dành cho doanh nghiệp.</p>
+              <div class="price">8.900.000đ</div>
+              <ul class="price-features">
+                <li>5–10 trang</li>
+                <li>Thiết kế UI riêng</li>
+                <li>Responsive</li>
+                <li>CMS quản trị</li>
+                <li>SEO cơ bản</li>
+                <li>Google Analytics</li>
+              </ul>
+              <a class="btn btn-primary" href="contact.html">Chọn gói</a>
+            </div>
+            <div class="price-card">
+              <h3>E-commerce / SaaS</h3>
+              <p class="price-desc">Dành cho website bán hàng hoặc nền tảng Startup.</p>
+              <div class="price">Liên hệ</div>
+              <ul class="price-features">
+                <li>Thiết kế riêng</li>
+                <li>Database</li>
+                <li>Đăng nhập người dùng</li>
+                <li>Dashboard</li>
+                <li>Thanh toán</li>
+                <li>API Integration</li>
+              </ul>
+              <a class="btn btn-secondary" href="contact.html">Nhận báo giá</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="cta-box">
+            <h2>Bạn đang có ý tưởng cho một website?</h2>
+            <p>
+              Hãy biến ý tưởng của bạn thành một website chuyên nghiệp, nhanh
+              và có khả năng tạo ra khách hàng.
+            </p>
+            <a href="contact.html" class="btn btn-primary">Trao đổi dự án →</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="contact-grid">
+            <div class="contact-info">
+              <div class="section-label">Liên hệ</div>
+              <h2>Hãy cùng tạo nên website của bạn.</h2>
+              <p>
+                Gửi cho chúng tôi thông tin dự án. Chúng tôi sẽ tư vấn giải
+                pháp phù hợp.
+              </p>
+              <div class="contact-details">
+                <div class="contact-detail">
+                  <span>Email</span>
+                  <strong><a href="mailto:info@webhd.vn">info@webhd.vn</a></strong>
+                </div>
+                <div class="contact-detail">
+                  <span>Điện thoại</span>
+                  <strong><a href="tel:0938002776">0938 002 776</a></strong>
+                </div>
+                <div class="contact-detail">
+                  <span>Thời gian làm việc</span>
+                  <strong>Thứ 2 – Thứ 7</strong>
+                </div>
+              </div>
+            </div>
+            <form class="contact-form" id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Họ tên</label>
+                  <input id="name" class="form-control" type="text" placeholder="Nguyễn Văn A" required />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Số điện thoại</label>
+                  <input id="phone" class="form-control" type="tel" placeholder="09xx xxx xxx" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" class="form-control" type="email" placeholder="email@example.com" />
+              </div>
+              <div class="form-group">
+                <label for="type">Loại Website</label>
+                <select id="type" class="form-control">
+                  <option>Landing Page</option>
+                  <option>Website công ty</option>
+                  <option>Web bán hàng / E-commerce</option>
+                  <option>Website Startup / SaaS</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Mô tả dự án</label>
+                <textarea id="message" class="form-control" placeholder="Hãy mô tả website bạn muốn làm..."></textarea>
+              </div>
+              <button class="btn btn-primary" style="width:100%" type="submit">
+                Gửi yêu cầu →
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+        <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>Thông tin liên hệ</h3>
+            <ul class="footer-contact">
+              <li>
+                <span class="footer-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v2a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h2a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L7.1 9.5a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.9z"/></svg>
+                </span>
+                <a href="tel:0938002776">0938 002 776</a>
+              </li>
+              <li>
+                <span class="footer-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+                </span>
+                <a href="mailto:info@webhd.vn">info@webhd.vn</a>
+              </li>
+            </ul>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook" class="social-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H9v3h2v7h3v-7h2.6l.4-3H14V9z"/></svg>
+              </a>
+              <a href="#" aria-label="YouTube" class="social-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23 7.5s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.9 4 12 4 12 4h0s-4.9 0-7.8.2c-.5.1-1.4.1-2.3 1C1.2 5.9 1 7.5 1 7.5S.8 9.4.8 11.2v1.7C.8 14.6 1 16.5 1 16.5s.2 1.6.9 2.3c.9.9 2.1.9 2.6 1 1.9.2 7.5.2 7.5.2s4.9 0 7.8-.2c.5-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.6v-1.7C23.2 9.4 23 7.5 23 7.5zM9.8 14.6V8.9l5.3 2.9-5.3 2.8z"/></svg>
+              </a>
+              <a href="#" aria-label="TikTok" class="social-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.6 7.4a5.7 5.7 0 0 1-3.4-1.1v7.2a5.7 5.7 0 1 1-5.7-5.7c.3 0 .6 0 .9.1v2.8a2.9 2.9 0 1 0 2 2.8V2h2.8a5.7 5.7 0 0 0 3.4 3.4v2z"/></svg>
+              </a>
+              <a href="#" aria-label="GitHub" class="social-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.8 1a9.6 9.6 0 0 1 5 0c2-1.3 2.8-1 2.8-1a3.6 3.6 0 0 1 .1 2.7 3.9 3.9 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h3>Về Chúng Tôi</h3>
+            <ul class="footer-list">
+              <li><a href="about.html">Về chúng tôi</a></li>
+              <li><a href="collection.html">Dự án</a></li>
+              <li><a href="contact.html">Liên hệ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Dịch Vụ</h3>
+            <ul class="footer-list">
+              <li><a href="product.html">Thiết kế website</a></li>
+              <li><a href="landing.html">Thiết kế landing page</a></li>
+              <li><a href="company.html">Thiết kế website công ty</a></li>
+              <li><a href="saas.html">Website Startup / SaaS</a></li>
+              <li><a href="ecommerce.html">Web bán hàng / E-commerce</a></li>
+              <li><a href="tai-ung-dung.html">Tải ứng dụng</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Chính sách</h3>
+            <ul class="footer-list">
+              <li><a href="privacy.html">Chính sách bảo mật</a></li>
+              <li><a href="terms.html">Điều khoản &amp; điều kiện</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 WebStudio. All rights reserved.</p>
         </div>
       </div>
-      <div class="app-progress-row"><span>Hoàn thiện nội dung</span><span>${pct}%</span></div>
-      <div class="app-progress-track" aria-hidden><div class="app-progress-fill" style="width:${pct}%"></div></div>
-      <div class="app-site-actions">
-        <button type="button" class="app-btn app-btn-ghost" data-go="xem-preview">Xem trang</button>
-        <button type="button" class="app-btn app-btn-primary" data-go="soan-noidung">Tiếp tục soạn</button>
-      </div>
-    </article>
-    <div class="app-checks">
-      ${list.map((item) => `
-        <div class="app-check">
-          <span class="app-check-icon${item.done ? " on" : ""}">${TYPE_ICONS[state.typeId] || TYPE_ICONS.landing}</span>
-          <span class="app-check-label">${esc(item.label)}</span>
-          <small>${item.done ? "Xong" : "Thiếu"}</small>
-        </div>`).join("")}
-    </div>`;
-}
+    </footer>
+  </div>
 
-function renderMau() {
-  const list = TEMPLATES.filter((t) => !state.filterType || t.type === state.filterType);
-  return `
-    <header class="app-home-top"><div><h1>Mẫu website</h1><p>Chọn mẫu theo loại — rồi chỉ sửa chữ và ảnh</p></div></header>
-    <div class="app-chips">
-      <button type="button" class="app-chip${!state.filterType ? " is-on" : ""}" data-filter="">Tất cả</button>
-      ${SITE_TYPES.map((t) => `<button type="button" class="app-chip${state.filterType === t.id ? " is-on" : ""}" data-filter="${t.id}">${esc(t.short)}</button>`).join("")}
-    </div>
-    <div class="app-tpl-grid">
-      ${list.map((t) => `
-        <button type="button" class="app-tpl" data-mau="${t.id}">
-          <div class="app-tpl-img"><img src="${t.image}" alt="" /></div>
-          <strong>${esc(t.name)}</strong>
-          <span>${esc(SITE_TYPES.find((x) => x.id === t.type)?.short || "")} · ${esc(t.use)}</span>
-        </button>`).join("")}
-    </div>`;
-}
-
-function renderSoan() {
-  const hints = {
-    landing: "1 trang bán sản phẩm, thu lead",
-    company: "Giới thiệu doanh nghiệp và dịch vụ",
-    saas: "Sản phẩm, bảng giá, đăng ký dùng thử",
-    ecommerce: "Danh mục, sản phẩm, đặt hàng COD"
-  };
-  return `
-    <header class="app-home-top"><div><h1>Soạn thông tin website</h1><p>Chọn loại website để bắt đầu — mỗi loại lưu riêng</p></div></header>
-    <ol class="app-soan-list">
-      ${SITE_TYPES.map((type, i) => `
-        <li>
-          <button type="button" class="app-soan-item" data-soan-type="${type.id}">
-            <span class="app-soan-idx">${i + 1}</span>
-            <div>
-              <strong>${esc(type.name)}</strong>
-              <p>${esc(hints[type.id] || type.blurb)}</p>
-            </div>
-          </button>
-        </li>`).join("")}
-    </ol>`;
-}
-
-function renderSoanNoidung() {
-  const type = typeInfo();
-  return `
-    <button type="button" class="app-back" data-go="soan">← Tất cả loại website</button>
-    <header class="app-home-top"><div><h1>Soạn ${esc(type.short)}</h1><p>Điền chữ, giá, SĐT rồi lưu</p></div></header>
-    <div class="app-compose-field"><label>Tên website</label><input id="f-name" value="${esc(state.name)}" placeholder="${esc(seed().headline)}" /></div>
-    <div class="app-compose-field"><label>Tiêu đề</label><textarea id="f-headline" placeholder="${esc(seed().headline)}">${esc(state.headline)}</textarea></div>
-    <div class="app-compose-field"><label>Mô tả</label><textarea id="f-lead" placeholder="${esc(seed().lead)}">${esc(state.lead)}</textarea></div>
-    <div class="app-compose-field"><label>Giá</label><input id="f-price" value="${esc(state.price)}" placeholder="${esc(seed().price)}" /></div>
-    <div class="app-compose-field"><label>Nút CTA</label><input id="f-cta" value="${esc(state.cta)}" placeholder="${esc(seed().cta)}" /></div>
-    <div class="app-compose-field"><label>Số điện thoại / Zalo</label><input id="f-phone" value="${esc(state.phone)}" placeholder="${esc(seed().phone)}" /></div>
-    <button type="button" class="app-btn app-btn-primary" id="saveDraft">Lưu thông tin</button>`;
-}
-
-function renderChat() {
-  const siteName = state.name || typeInfo().name;
-  const groups = state.groups || [];
-  return `
-    <div class="app-chat-screen">
-      <header class="app-home-top"><div><h1>Chat</h1><p>Chia sẻ mã của bạn hoặc nhập mã để kết nối</p></div></header>
-      <section class="app-chat-code-card">
-        <div><small>Mã của bạn</small><strong>${esc(state.myCode)}</strong></div>
-        <button type="button" class="app-btn app-btn-primary" id="copyCode">Sao chép</button>
-      </section>
-      <form class="app-chat-join" id="joinForm">
-        <input id="joinCode" maxlength="8" placeholder="Nhập mã kết nối" autocapitalize="characters" />
-        <button type="submit" class="app-btn app-btn-primary">Kết nối</button>
-      </form>
-      <button type="button" class="app-chat-create" id="createGroup">Tạo nhóm và lấy mã chia sẻ</button>
-      <div class="app-chat-inbox">
-        <button type="button" class="app-chat-inbox-item" data-chat="site">
-          <span class="app-chat-inbox-avatar is-letter">S</span>
-          <span class="app-chat-inbox-copy">
-            <span class="app-chat-inbox-row"><strong>${esc(siteName)}</strong><span>Nhóm site</span></span>
-            <span class="app-chat-inbox-preview">Chat cùng người soạn website này</span>
-          </span>
-        </button>
-        ${groups.map((g) => `
-          <button type="button" class="app-chat-inbox-item" data-chat="${esc(g.code)}">
-            <span class="app-chat-inbox-avatar is-letter">${esc((g.title || "N").slice(0,1).toUpperCase())}</span>
-            <span class="app-chat-inbox-copy">
-              <span class="app-chat-inbox-row"><strong>${esc(g.title)}</strong><span>${esc(g.code)}</span></span>
-              <span class="app-chat-inbox-preview">${esc(g.last || "Chưa có tin")}</span>
-            </span>
-          </button>`).join("")}
-      </div>
-    </div>`;
-}
-
-function renderChatThread() {
-  const title = state.activeChat === "site" ? (state.name || typeInfo().name) : ("Nhóm " + (state.activeChat || ""));
-  return `
-    <button type="button" class="app-back" data-go="chat">← Chat</button>
-    <header class="app-home-top"><div><h1>${esc(title)}</h1><p>Tin nhắn lưu trên thiết bị</p></div></header>
-    <div class="app-chat-list" id="chatList">
-      ${state.messages.map((m) => `<div class="app-chat-bubble ${m.who}">${esc(m.text)}</div>`).join("")}
-    </div>
-    <form class="app-chat-form" id="chatForm">
-      <input id="chatInput" placeholder="Nhắn tin..." autocomplete="off" />
-      <button class="app-btn app-btn-primary" type="submit">Gửi</button>
-    </form>`;
-}
-
-function renderXem() {
-  return `
-    <header class="app-home-top"><div><h1>Xem trang</h1><p>Mỗi loại website là một trang riêng — hiện sau khi lưu thông tin</p></div></header>
-    <ol class="app-soan-list">
-      ${SITE_TYPES.map((type, i) => {
-        const saved = state.savedTypes && state.savedTypes[type.id];
-        return `
-        <li>
-          <button type="button" class="app-soan-item${saved ? "" : " is-locked"}" data-xem-type="${type.id}">
-            <span class="app-soan-idx">${i + 1}</span>
-            <div>
-              <strong>${esc(type.name)}</strong>
-              <p>${saved ? esc(saved) : "Chưa lưu — soạn rồi bấm Lưu thông tin"}</p>
-            </div>
-          </button>
-        </li>`;
-      }).join("")}
-    </ol>`;
-}
-
-function renderXemPreview() {
-  const type = typeInfo();
-  const t = tpl();
-  const s = seed();
-  const phone = val("phone");
-  return `
-    <button type="button" class="app-back" data-go="xem">← Tất cả loại website</button>
-    <header class="app-home-top"><div><h1>Xem trước</h1><p>${esc(type.name)} · ${esc(state.name || t.name)}</p></div></header>
-    <div class="app-preview">
-      <div class="app-preview-bar"><span></span><span></span><span></span></div>
-      <div class="app-preview-hero">
-        <small>${esc(type.name)}</small>
-        <h2>${esc(val("headline") || t.name)}</h2>
-        <p>${esc(val("lead"))}</p>
-        ${val("price") ? '<strong class="app-preview-price">' + esc(val("price")) + "</strong>" : ""}
-        <span class="app-preview-cta">${esc(val("cta"))}</span>
-      </div>
-      <ul class="app-preview-benefits">
-        <li>${esc(s.b1)}</li>
-        <li>${esc(s.b2)}</li>
-        <li>${esc(s.b3)}</li>
-      </ul>
-      <blockquote class="app-preview-review">
-        <p>★★★★★ ${esc(s.quote)}</p>
-        <cite>${esc(s.author)}</cite>
-      </blockquote>
-      <div class="app-preview-cta-row">
-        <span>SĐT ${esc(phone)}</span>
-        <span>Zalo ${esc(phone)}</span>
-      </div>
-    </div>
-    <div class="app-site-actions is-center" style="margin-top:16px">
-      <button type="button" class="app-btn app-btn-dark" data-go="soan-noidung">Sửa thông tin</button>
-    </div>`;
-}
-
-function renderToi() {
-  const letter = state.userName.slice(0, 1).toUpperCase();
-  const rows = [
-    ["ho-so", "Hồ sơ"],
-    ["giao-dien", "Giao diện"],
-    ["quyen-rieng-tu", "Quyền riêng tư"],
-    ["tai-khoan", "Tài khoản và bảo mật"],
-    ["nha-phat-trien", "Nhà phát triển"],
-    ["gioi-thieu", "Giới thiệu"]
-  ];
-  return `
-    <div class="app-settings">
-      <header class="app-settings-head">
-        <button type="button" class="app-settings-head-link" data-go="ho-so">
-          <div class="app-settings-avatar">${esc(letter)}</div>
-          <div class="app-settings-who">
-            <strong>${esc(state.userName)}</strong>
-            <span>${esc(state.name || typeInfo().name)} · ${esc(state.inviteCode)}</span>
-            <span>Đăng nhập: ${esc(formatVN(state.lastLogin))} (GMT+7)</span>
-          </div>
-        </button>
-        <button type="button" class="app-settings-logout" id="logoutBtn" aria-label="Đăng xuất">${LOGOUT}</button>
-      </header>
-      <div class="app-settings-list">
-        ${rows.map(([id, label]) => `
-          <button type="button" class="app-settings-row" data-go="${id}">
-            <span class="app-settings-ico">${MENU_ICONS[id]}</span>
-            <span>${esc(label)}</span>
-            ${CHEV}
-          </button>`).join("")}
-      </div>
-    </div>`;
-}
-
-function renderGiaoDien() {
-  return `
-    <button type="button" class="app-back" data-go="toi">← Cài đặt</button>
-    <header class="app-home-top"><div><h1>Giao diện</h1><p>Sáng hoặc tối</p></div></header>
-    <div class="app-theme-picks">
-      <button type="button" class="app-theme-pick${state.theme === "light" ? " is-on" : ""}" data-theme="light">Sáng</button>
-      <button type="button" class="app-theme-pick${state.theme === "dark" ? " is-on" : ""}" data-theme="dark">Tối</button>
-    </div>`;
-}
-
-function renderHoSo() {
-  return `
-    <button type="button" class="app-back" data-go="toi">← Cài đặt</button>
-    <header class="app-home-top"><div><h1>Hồ sơ</h1><p>Biệt danh và tên hiển thị</p></div></header>
-    <div class="app-compose-field"><label>Tên hiển thị</label><input id="f-user" value="${esc(state.userName)}" /></div>
-    <div class="app-compose-field"><label>Ngày sinh</label><input id="f-birthday" type="date" value="${esc(state.birthday || "")}" /></div>
-    <button type="button" class="app-btn app-btn-primary" id="saveProfile">Lưu hồ sơ</button>
-    <p class="app-note" id="profileMsg"></p>`;
-}
-
-function renderQuyen() {
-  return `
-    <button type="button" class="app-back" data-go="toi">← Cài đặt</button>
-    <header class="app-home-top"><div><h1>Quyền riêng tư</h1><p>Dữ liệu lưu trên trình duyệt của bạn</p></div></header>
-    <div class="app-info-card"><strong>Render</strong><p>Bản nháp, chat và hồ sơ được lưu localStorage trên máy/điện thoại. Không gửi lên máy chủ.</p></div>
-    <div class="app-nav-row is-in-card" data-go="ho-so"><span>Hồ sơ</span>${CHEV}</div>
-    <div class="app-nav-row is-in-card" data-go="tai-khoan"><span>Tài khoản</span>${CHEV}</div>`;
-}
-
-function renderTaiKhoan() {
-  return `
-    <button type="button" class="app-back" data-go="toi">← Cài đặt</button>
-    <header class="app-home-top"><div><h1>Tài khoản và bảo mật</h1><p>Bản Render không có đăng nhập máy chủ</p></div></header>
-    <div class="app-info-card"><p>Để dùng tài khoản, mật khẩu, email đầy đủ như bản trên máy, cần máy chủ Next.js. Bản Render chỉ lưu hồ sơ trên thiết bị.</p></div>
-    <div class="app-nav-row is-in-card" data-go="ho-so"><span>Thông tin hồ sơ</span>${CHEV}</div>`;
-}
-
-function renderDev() {
-  return `
-    <button type="button" class="app-back" data-go="toi">← Cài đặt</button>
-    <header class="app-home-top"><div><h1>Nhà phát triển</h1><p>WebStudio App khách</p></div></header>
-    <div class="app-info-card"><strong>Phiên bản Render</strong><p>App tĩnh 24/7. Soạn / xem / chat lưu trên trình duyệt.</p></div>`;
-}
-
-function renderAbout() {
-  return `
-    <button type="button" class="app-back" data-go="toi">← Cài đặt</button>
-    <header class="app-home-top"><div><h1>Giới thiệu</h1><p>WebStudio — tạo website trên điện thoại</p></div></header>
-    <div class="app-info-card"><strong>WebStudio App</strong><p>Ứng dụng giúp bạn tự soạn Landing Page, website công ty, SaaS và web bán hàng ngay trên điện thoại.</p></div>
-    <p class="app-sec-label">Bạn làm được gì</p>
-    <ul class="app-info-list">
-      <li><strong>4 loại website</strong><span>Landing, công ty, SaaS, bán hàng</span></li>
-      <li><strong>Soạn theo khối</strong><span>Điền chữ, giá, SĐT/Zalo rồi lưu</span></li>
-      <li><strong>Xem trước</strong><span>Tab Xem hiện đúng loại bạn đã soạn</span></li>
-      <li><strong>Chat</strong><span>Tin nhắn lưu trên thiết bị</span></li>
-    </ul>
-    <p class="app-info-foot">Phiên bản 1.0 · © 2026 WebStudio</p>`;
-}
-
-function renderTaiApk() {
-  return `
-    <button type="button" class="app-back" data-go="toi">← Cài đặt</button>
-    <header class="app-home-top"><div><h1>Tải ứng dụng</h1><p>Cài WebStudio trên Android</p></div></header>
-    <a class="app-btn app-btn-primary" id="dlApk" href="WebStudio.apk" download="WebStudio.apk">Tải ứng dụng Android</a>
-    <p class="app-note" id="dlHint" style="margin-top:12px">File WebStudio.apk nằm cùng thư mục với index.html trên Render.</p>`;
-}
-
-function bind() {
-  document.querySelectorAll("[data-go]").forEach((el) => el.addEventListener("click", () => go(el.dataset.go)));
-  document.querySelectorAll("[data-type]").forEach((el) => el.addEventListener("click", () => {
-    state.typeId = el.dataset.type;
-    state.templateId = TYPE_TEMPLATE[state.typeId];
-    save(state); render();
-  }));
-  document.querySelectorAll("[data-filter]").forEach((el) => {
-    el.addEventListener("click", () => { state.filterType = el.dataset.filter || ""; render(); });
-  });
-  document.querySelectorAll("[data-mau]").forEach((el) => el.addEventListener("click", () => {
-    const found = TEMPLATES.find((t) => t.id === el.dataset.mau);
-    if (!found) return;
-    state.templateId = found.id;
-    state.typeId = found.type;
-    save(state); go("soan-noidung");
-  }));
-  document.querySelectorAll("[data-soan-type]").forEach((el) => el.addEventListener("click", () => {
-    state.typeId = el.dataset.soanType;
-    state.templateId = TYPE_TEMPLATE[state.typeId];
-    save(state); go("soan-noidung");
-  }));
-  document.querySelectorAll("[data-xem-type]").forEach((el) => el.addEventListener("click", () => {
-    state.typeId = el.dataset.xemType;
-    state.templateId = TYPE_TEMPLATE[state.typeId];
-    save(state); go("xem-preview");
-  }));
-  document.querySelectorAll("[data-theme]").forEach((el) => el.addEventListener("click", () => {
-    state.theme = el.dataset.theme;
-    save(state); render();
-  }));
-  const saveBtn = document.getElementById("saveDraft");
-  if (saveBtn) saveBtn.onclick = () => {
-    state.name = document.getElementById("f-name").value.trim();
-    state.headline = document.getElementById("f-headline").value.trim();
-    state.lead = document.getElementById("f-lead").value.trim();
-    state.price = document.getElementById("f-price").value.trim();
-    state.cta = document.getElementById("f-cta").value.trim();
-    state.phone = document.getElementById("f-phone").value.trim();
-    state.savedTypes = state.savedTypes || {};
-    state.savedTypes[state.typeId] = state.name || typeInfo().name;
-    save(state);
-    go("xem-preview");
-  };
-  const saveProfile = document.getElementById("saveProfile");
-  if (saveProfile) saveProfile.onclick = () => {
-    state.userName = document.getElementById("f-user").value.trim() || "Khách";
-    state.birthday = document.getElementById("f-birthday").value;
-    save(state);
-    const msg = document.getElementById("profileMsg");
-    if (msg) msg.textContent = "Đã lưu hồ sơ.";
-  };
-  const chatForm = document.getElementById("chatForm");
-  if (chatForm) chatForm.onsubmit = (e) => {
-    e.preventDefault();
-    const input = document.getElementById("chatInput");
-    const text = input.value.trim();
-    if (!text) return;
-    state.messages.push({ who: "me", text });
-    save(state); render();
-  };
-  const copyCode = document.getElementById("copyCode");
-  if (copyCode) copyCode.onclick = () => {
-    navigator.clipboard.writeText(state.myCode || "").then(() => {
-      copyCode.textContent = "Đã copy";
-      setTimeout(() => { copyCode.textContent = "Sao chép"; }, 1400);
-    }).catch(() => {});
-  };
-  const joinForm = document.getElementById("joinForm");
-  if (joinForm) joinForm.onsubmit = (e) => {
-    e.preventDefault();
-    const code = (document.getElementById("joinCode").value || "").trim().toUpperCase();
-    if (!code) return;
-    state.groups = state.groups || [];
-    if (!state.groups.some((g) => g.code === code)) {
-      state.groups.unshift({ code, title: "Nhóm " + code, last: "Chưa có tin" });
-    }
-    save(state); render();
-  };
-  const createGroup = document.getElementById("createGroup");
-  if (createGroup) createGroup.onclick = () => {
-    const code = makeCode();
-    state.groups = state.groups || [];
-    state.groups.unshift({ code, title: "Nhóm " + code, last: "Chưa có tin" });
-    save(state); render();
-  };
-  document.querySelectorAll("[data-chat]").forEach((el) => {
-    el.addEventListener("click", () => {
-      state.activeChat = el.dataset.chat;
-      save(state); go("chat-thread");
-    });
-  });
-  const logoutBtn = document.getElementById("logoutBtn");
-  if (logoutBtn) logoutBtn.onclick = () => go("home");
-  const apk = document.getElementById("dlApk");
-  if (apk) {
-    const url = resolveApkUrl();
-    apk.href = url;
-    apk.onclick = (e) => {
-      e.preventDefault();
-      fetch(url).then((r) => { if (!r.ok) throw new Error("missing"); return r.blob(); })
-        .then((blob) => {
-          const a = document.createElement("a");
-          a.href = URL.createObjectURL(blob);
-          a.download = "WebStudio.apk";
-          a.click();
-        })
-        .catch(() => {
-          const hint = document.getElementById("dlHint");
-          if (hint) hint.textContent = "Chưa có WebStudio.apk trên Render. Hãy tải file APK lên cùng thư mục với index.html.";
-        });
-    };
-  }
-}
-
-function renderTabs(active) {
-  document.getElementById("tabbar").innerHTML = TABS.map((tab) => `
-    <button type="button" class="app-tab${tab.id === active ? " is-on" : ""}" data-go="${tab.id}">
-      <span class="app-tab-icon">${ICONS[tab.id]}</span>${tab.label}
-    </button>`).join("");
-}
-
-function render() {
-  const { view, tab } = route();
-  document.getElementById("phone").dataset.theme = state.theme;
-  document.getElementById("phoneBody").className = "app-phone-body" + (view === "chat" ? " is-chat" : "");
-  const views = {
-    home: renderHome, mau: renderMau, soan: renderSoan, "soan-noidung": renderSoanNoidung,
-    chat: renderChat, "chat-thread": renderChatThread, xem: renderXem, "xem-preview": renderXemPreview,
-    toi: renderToi, "ho-so": renderHoSo, "giao-dien": renderGiaoDien,
-    "quyen-rieng-tu": renderQuyen, "tai-khoan": renderTaiKhoan,
-    "nha-phat-trien": renderDev, "gioi-thieu": renderAbout, "tai-apk": renderTaiApk
-  };
-  document.getElementById("phoneBody").innerHTML = (views[view] || renderHome)();
-  renderTabs(tab);
-  bind();
-}
-
-window.addEventListener("hashchange", render);
-try {
-  var ua = navigator.userAgent || "";
-  var native = /WebStudioKhach/i.test(ua) || ua.indexOf("; wv") !== -1 || window.matchMedia("(max-width: 480px)").matches;
-  document.documentElement.classList.toggle("app-native", native);
-  render();
-} catch (err) {
-  var body = document.getElementById("phoneBody");
-  if (body) body.innerHTML = "<p class='app-note' style='padding:24px'>Không mở được app. Tải lại trang.</p>";
-}
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
