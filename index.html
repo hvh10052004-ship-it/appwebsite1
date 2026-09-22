@@ -2579,12 +2579,15 @@ function render() {
 }
 
 window.addEventListener("hashchange", render);
-(function () {
+try {
   var ua = navigator.userAgent || "";
-  var native = /WebStudioKhach/i.test(ua) || /; wv)/i.test(ua) || window.matchMedia("(max-width: 480px)").matches;
+  var native = /WebStudioKhach/i.test(ua) || ua.indexOf("; wv") !== -1 || window.matchMedia("(max-width: 480px)").matches;
   document.documentElement.classList.toggle("app-native", native);
-})();
-render();
+  render();
+} catch (err) {
+  var body = document.getElementById("phoneBody");
+  if (body) body.innerHTML = "<p class='app-note' style='padding:24px'>Không mở được app. Tải lại trang.</p>";
+}
   </script>
 </body>
 </html>
